@@ -4,6 +4,10 @@
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~loki/.vim/bundle/Vundle.vim
 cp -R vim/ ~loki/.vim
+mkdir -p ~loki/.vim/backup
+mkdir -p ~loki/.vim/swap
+mkdir -p ~loki/.vim/undo
+
 cp vimrc ~loki/.vimrc
 vim +PluginInstall +qall
 
