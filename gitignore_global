@@ -1,0 +1,17 @@
+*~
+*.swp
+*.swo
+.DS_Store
+._*
+tags
+tags.temp
+*.pyc
+bin/stubs
+.bundle
+.vagrant
+.DS_Store
+*.o
+*.pyo
+*.bak
+vim/.netrwhist
+vim/sessions
