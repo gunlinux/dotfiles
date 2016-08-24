@@ -5,6 +5,7 @@ set showcmd                     " display incomplete commands
 set nu
 
 colorscheme myterm
+set noeb vb t_vb=               " disable beep of dead
 
 " Plugins 
 filetype off                    " For plugins
@@ -27,7 +28,6 @@ Plugin 'airblade/vim-gitgutter'
 
 " --- Python ---
 Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'mitsuhiko/vim-python-combined'
 
@@ -53,10 +53,6 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 "=====================================================
 "" Python-mode settings
 "=====================================================
-"" отключаем автокомплит по коду (у нас вместо него используется jedi-vim)
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
 
 " документация
 " let g:pymode_doc = 0
