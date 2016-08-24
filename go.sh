@@ -24,4 +24,5 @@ cp gitignore_global ~loki/.gitignore_global
 
 # stuff
 
+cp tmux.conf ~loki/.tmux.conf
 cp editorconfig ~loki/.editorconfig
