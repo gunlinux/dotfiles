@@ -13,7 +13,4 @@ alias nginx.restart='nginx.stop && nginx.start'
 
 
 alias ls="ls -G"
-# ack
-
-alias grep="ack"
 
