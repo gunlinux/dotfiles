@@ -4,6 +4,10 @@ set encoding=utf-8
 set showcmd                     " display incomplete commands
 set nu
 
+if &term == "xterm-256color"
+  set t_Co=256
+endif
+
 colorscheme myterm
 set noeb vb t_vb=               " disable beep of dead
 
