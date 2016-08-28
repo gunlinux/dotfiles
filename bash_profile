@@ -61,9 +61,15 @@ export CLICOLOR=1
 if [ -f /usr/local/git/contrib/completion ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
+
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 
 
 . ~/.bash_aliases
