@@ -4,6 +4,30 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
 
+# git
+
+
+if [ -f /usr/local/git/contrib/completion ]; then
+  . /usr/local/git/contrib/completion/git-completion.bash
+fi
+
+if [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+  . /usr/local/etc/bash_completion.d/git-prompt.sh
+fi
+
+if [ -f /etc/bash_completion.d/git-prompt ]; then
+  . /etc/bash_completion.d/git-prompt
+fi
+
+export GIT_PS1_SHOWDIRTYSTATE=1
 
 
 LOKI_DEFAULT_COLOR="[00m"
@@ -50,27 +74,12 @@ export LOKI_BASEPROMPT='\e]0;\007\e${LOKI_USER_COLOR}\u \
 \e${LOKI_GRAY_COLOR}at \e${LOKI_ORANGE_COLOR}\h \
 \e${LOKI_GRAY_COLOR}in \e${LOKI_GREEN_COLOR}\w\
 `mitsuhikos_virtualenv`\
-\e${LOKI_DEFAULT_COLOR}'
+\e${LOKI_DEFAULT_COLOR}$(__git_ps1 " (%s)")'
 export PS1="\[\033[G\]${LOKI_BASEPROMPT}
 $ "
 
 export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-
-if [ -f /usr/local/git/contrib/completion ]; then
-  . /usr/local/git/contrib/completion/git-completion.bash
-fi
-
-if [ -f /etc/bash_completion ]; then
-  . /etc/bash_completion
-fi
-
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  . /usr/local/etc/bash_completion.d/git-completion.bash
-fi
-
-
-
 . ~/.bash_aliases
 
