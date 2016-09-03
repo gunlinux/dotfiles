@@ -27,6 +27,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rizzatti/dash.vim'
 
 
+Plugin 'Townk/vim-autoclose'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-gitgutter'
 
