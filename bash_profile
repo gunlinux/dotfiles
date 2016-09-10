@@ -4,9 +4,6 @@
 export EDITOR=vim
 export GIT_EDITOR=vim
 
-# git
-
-
 if [ -f /usr/local/git/contrib/completion ]; then
   . /usr/local/git/contrib/completion/git-completion.bash
 fi
@@ -29,57 +26,38 @@ fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
+function prompt {
+  local BLUE="\[\033[0;34m\]"
+  local DARK_BLUE="\[\033[1;34m\]"
+  local RED="\[\033[0;31m\]"
+  local DARK_RED="\[\033[1;31m\]"
+  local NO_COLOR="\[\033[0m\]"
+  local DEFAULT_COLOR="[00m"
+  local GRAY_COLOR="[37m"
+  local PINK_COLOR="[35m"
+  local GREEN_COLOR="[32m"
+  local ORANGE_COLOR="[33m"
+  local RED_COLOR="[31m"
 
-LOKI_DEFAULT_COLOR="[00m"
-LOKI_GRAY_COLOR="[37m"
-LOKI_PINK_COLOR="[35m"
-LOKI_GREEN_COLOR="[32m"
-LOKI_ORANGE_COLOR="[33m"
-LOKI_RED_COLOR="[31m"
-if [ `id -u` == '0' ]; then
-  LOKI_USER_COLOR=$LOKI_RED_COLOR
-else
-  LOKI_USER_COLOR=$LOKI_PINK_COLOR
-fi
-
-LOKI_VC_PROMPT=$' on \033[34m%n\033[00m:\033[00m%[unknown]b\033[32m'
-LOKI_VC_PROMPT_EX="$LOKI_VC_PROMPT%m%u"
-
-
-
-mitsuhikos_virtualenv() {
-  if [ x$VIRTUAL_ENV != x ]; then
-    if [[ $VIRTUAL_ENV == *.virtualenvs/* ]]; then
-      ENV_NAME=`basename "${VIRTUAL_ENV}"`
-    else
-      folder=`dirname "${VIRTUAL_ENV}"`
-      ENV_NAME=`basename "$folder"`
-    fi
-    echo -n $' \033[37mworkon \033[31m'
-    echo -n $ENV_NAME
-    echo -n $'\033[00m'
-    # Shell title
-    echo -n $'\033]0;venv:'
-    echo -n $ENV_NAME
-    echo -n $'\007'
+  if [ `id -u` == '0' ]; then
+      USER_COLOR=$RED_COLOR
+  else
+      USER_COLOR=$PINK_COLOR
   fi
 
-  # Also setup our readline properly constantly since
-  # stuff tends to overwrite this.
-  stty werase undef
-  bind '"\C-w": unix-filename-rubout'
+  local RES_PS="\e${DEFAULT_COLOR}"
+  local USER_PS="\e${USER_COLOR}\u${RES_PS}"
+  local HOST_PS="\e${ORANGE_COLOR}\h${RES_PS}"
+  local CWD_PS="\e${GREEN_COLOR}\w${RES_PS}"
+  local GIT_PS='$(__git_ps1 "(%s)")'
+  export PS1="${USER_PS}@${HOST_PS} ${CWD_PS} ${GIT_PS} \n\$ "
 }
+prompt
 
-export LOKI_BASEPROMPT='\e]0;\007\e${LOKI_USER_COLOR}\u \
-\e${LOKI_GRAY_COLOR}at \e${LOKI_ORANGE_COLOR}\h \
-\e${LOKI_GRAY_COLOR}in \e${LOKI_GREEN_COLOR}\w\
-`mitsuhikos_virtualenv`\
-\e${LOKI_DEFAULT_COLOR}$(__git_ps1 " (%s)")'
-export PS1="\[\033[G\]${LOKI_BASEPROMPT}
-$ "
 
 export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 . ~/.bash_aliases
 
+export PATH="/usr/local/bin:$PATH"
