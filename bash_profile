@@ -55,6 +55,9 @@ prompt
 export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-. ~/.bash_aliases
+
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
 
 export PATH="/usr/local/bin:$PATH"
