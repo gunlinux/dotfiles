@@ -27,30 +27,27 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 
 function prompt {
-  local BLUE="\[\033[0;34m\]"
-  local DARK_BLUE="\[\033[1;34m\]"
-  local RED="\[\033[0;31m\]"
-  local DARK_RED="\[\033[1;31m\]"
-  local NO_COLOR="\[\033[0m\]"
-  local DEFAULT_COLOR="[00m"
-  local GRAY_COLOR="[37m"
-  local PINK_COLOR="[35m"
-  local GREEN_COLOR="[32m"
-  local ORANGE_COLOR="[33m"
-  local RED_COLOR="[31m"
+  local DEFAULT_COLOR="[0m\]"
+  local PINK_COLOR="[35m\]"
+  local GREEN_COLOR="[32m\]"
+  local ORANGE_COLOR="[33m\]"
+  local RED_COLOR="[1;31m\]"
+  local BLUE_COLOR="[34m\]"
+  local C_PS="\[\e[m\]"
 
   if [ `id -u` == '0' ]; then
-      USER_COLOR=$RED_COLOR
+      USER_COLOR="\[\e${RED_COLOR}"
+      W_PS="${USER_COLOR}#${C_PS} "
   else
-      USER_COLOR=$PINK_COLOR
+      USER_COLOR="\[\e${PINK_COLOR}"
+      W_PS="\[\e${BLUE_COLOR}\$${C_PS} "
   fi
-
-  local RES_PS="\e${DEFAULT_COLOR}"
-  local USER_PS="\e${USER_COLOR}\u${RES_PS}"
-  local HOST_PS="\e${ORANGE_COLOR}\h${RES_PS}"
-  local CWD_PS="\e${GREEN_COLOR}\w${RES_PS}"
+  local USER_PS="${USER_COLOR}\u${C_PS}"
+  local HOST_PS="\[\e${ORANGE_COLOR}\h${C_PS}"
+  local CWD_PS="\[\e${GREEN_COLOR}\w${C_PS}"
   local GIT_PS='$(__git_ps1 "(%s)")'
-  export PS1="${USER_PS}@${HOST_PS} ${CWD_PS} ${GIT_PS} \n\$ "
+  export PS1="${USER_PS}@${HOST_PS} ${CWD_PS}${GIT_PS} ${W_PS}"
+
 }
 prompt
 
