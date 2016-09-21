@@ -39,6 +39,11 @@ Plugin 'mitsuhiko/vim-python-combined'
 " --- html ---
 Plugin 'mattn/emmet-vim'
 
+" --- Gui ---
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 call vundle#end()
 filetype on
 filetype plugin on
@@ -100,6 +105,12 @@ autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
 
 let g:user_emmet_install_global = 0
 autocmd FileType html,htmljinja EmmetInstall
+
+" airline
+
+set laststatus=2
+let g:airline_theme = 'solarized'
+
 
 " template language support (SGML / XML too)
 " " ------------------------------------------
