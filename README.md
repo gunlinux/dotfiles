@@ -5,5 +5,5 @@ Some of them stealed from there https://github.com/mitsuhiko/dotfiles
 
 ### Bash
 
-![img](https://github.com/gunlinux/dotfiles/img/bash.png)
+![img](https://raw.githubusercontent.com/gunlinux/dotfiles/master/img/bash.png)
 
