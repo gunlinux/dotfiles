@@ -36,6 +36,9 @@ Plugin 'klen/python-mode'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'mitsuhiko/vim-python-combined'
 
+" --- html ---
+Plugin 'mattn/emmet-vim'
+
 call vundle#end()
 filetype on
 filetype plugin on
@@ -93,6 +96,10 @@ let g:jedi#popup_select_first = 0
 
 autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
 
+" emmet
+
+let g:user_emmet_install_global = 0
+autocmd FileType html,htmljinja EmmetInstall
 
 " template language support (SGML / XML too)
 " " ------------------------------------------
