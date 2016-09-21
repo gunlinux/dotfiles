@@ -7,3 +7,8 @@ Some of them stealed from there https://github.com/mitsuhiko/dotfiles
 
 ![img](https://github.com/gunlinux/dotfiles/img/bash.png)
 
+
+### Vim 
+
+![img](https://github.com/gunlinux/dotfiles/img/vim.png)
+
