@@ -17,7 +17,7 @@ vim +PluginInstall +qall
 cp bash_aliases ~loki/.bash_aliases
 cp bash_profile ~loki/.bash_profile
 
-# git 
+# git
 
 cp gitconfig ~loki/.gitconfig
 cp gitignore_global ~loki/.gitignore_global

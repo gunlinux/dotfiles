@@ -11,7 +11,7 @@ endif
 colorscheme myterm
 set noeb vb t_vb=               " disable beep of dead
 
-" Plugins 
+" Plugin
 filetype off                    " For plugins
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -52,7 +52,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-"" Plugin config 
+" Plugin config
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 "" Whitespace
@@ -70,7 +70,6 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 "" Python-mode settings
 "=====================================================
 
-" документация
 " let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 " " проверка кода
@@ -142,5 +141,4 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Ctrl> <Esc>
-
 

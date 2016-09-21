@@ -16,7 +16,7 @@ if version > 580
     " complaining
     hi clear
     if exists("syntax_on")
-	syntax reset
+syntax reset
     endif
 endif
 let g:colors_name="desert"
