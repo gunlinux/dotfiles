@@ -3,3 +3,7 @@
 Some of them stealed from there https://github.com/mitsuhiko/dotfiles
 
 
+### Bash
+
+![img](https://github.com/gunlinux/dotfiles/img/bash.png)
+
