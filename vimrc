@@ -11,7 +11,7 @@ endif
 colorscheme myterm
 set noeb vb t_vb=               " disable beep of dead
 
-" Plugin
+" Plugins 
 filetype off                    " For plugins
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -52,7 +52,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-" Plugin config
+"" Plugin config 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 "" Whitespace
@@ -70,6 +70,7 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 "" Python-mode settings
 "=====================================================
 
+" документация
 " let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 " " проверка кода
@@ -112,7 +113,11 @@ autocmd FileType html,htmljinja EmmetInstall
 
 set laststatus=2
 let g:airline_theme = 'solarized'
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
 
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t' 
 
 " template language support (SGML / XML too)
 " " ------------------------------------------
@@ -141,4 +146,5 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Ctrl> <Esc>
+
 
