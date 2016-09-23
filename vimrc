@@ -147,4 +147,13 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Ctrl> <Esc>
 
+" Tab switching
+set hidden
+
+nnoremap <Left> :bp<CR>
+nnoremap <Right> :bn<CR>
+
+
+
+
 
