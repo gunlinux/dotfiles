@@ -30,3 +30,5 @@ alias u="sudo softwareupdate --install --all \
             && brew cleanup \
             && brew cask cleanup \
             && npm update -g"
+
+alias github-status="curl https://status.github.com/api/status.json"
