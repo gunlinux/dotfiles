@@ -11,7 +11,7 @@ endif
 colorscheme myterm
 set noeb vb t_vb=               " disable beep of dead
 
-" Plugins 
+" Plugins
 filetype off                    " For plugins
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -53,7 +53,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-"" Plugin config 
+"" Plugin config
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 "" Whitespace
@@ -118,7 +118,7 @@ let g:airline_theme = 'solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t' 
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " template language support (SGML / XML too)
 " " ------------------------------------------
