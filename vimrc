@@ -25,9 +25,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rizzatti/dash.vim'
-
-
-Plugin 'Townk/vim-autoclose'
 Plugin 'editorconfig/editorconfig-vim'
 
 " --- Git
@@ -126,7 +123,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " template language support (SGML / XML too)
 " " ------------------------------------------
 " " and disable that stupid html rendering (like making stuff bold etc)
-autocmd FileType xml,html,htmljinja,htmldjango setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType xml,html,htmljinja,htmldjango setlocal ts=4 sw=4 sts=0 expandtab
 autocmd FileType html setlocal commentstring=<!--\ %s\ -->
 autocmd FileType htmljinja setlocal commentstring={#\ %s\ #}
 let html_no_rendering=1
@@ -159,7 +156,10 @@ nnoremap <Right> :bn<CR>
 
 
 
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['javascript', 'css'],'passive_filetypes': [] }
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['python', 'javascript', 'css'],
+                            \ 'passive_filetypes': [] }
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -170,4 +170,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
 let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_javascript_checkers = ['eslint']
