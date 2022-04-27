@@ -2,27 +2,27 @@
 
 # vim
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~loki/.vim/bundle/Vundle.vim
-mkdir -p ~loki/.vim/backup
-mkdir -p ~loki/.vim/swap
-mkdir -p ~loki/.vim/colors
-mkdir -p ~loki/.vim/undo
-cp vim/colors/* ~loki/.vim/colors/
-cp vimrc ~loki/.vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/swap
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/undo
+cp vim/colors/* ~/.vim/colors/
+cp vimrc ~/.vimrc
 vim +PluginInstall +qall
 
 
 # bash
 
-cp bash_aliases ~loki/.bash_aliases
-cp bash_profile ~loki/.bash_profile
+cp bash_aliases ~/.bash_aliases
+cp bash_profile ~/.bash_profile
 
 # git
 
-cp gitconfig ~loki/.gitconfig
-cp gitignore_global ~loki/.gitignore_global
+cp gitconfig ~/.gitconfig
+cp gitignore_global ~/.gitignore_global
 
 # stuff
 
-cp tmux.conf ~loki/.tmux.conf
-cp editorconfig ~loki/.editorconfig
+cp tmux.conf ~/.tmux.conf
+cp editorconfig ~/.editorconfig
