@@ -74,6 +74,9 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 " документация
 " let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
+let g:syntastic_python_python_exec = 'python3'
+let g:syntastic_python_checkers = ['python']
+
 " " проверка кода
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
