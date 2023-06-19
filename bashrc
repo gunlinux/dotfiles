@@ -43,6 +43,10 @@ virtualenv() {
     echo -n $' \033[37mworkon \033[31m'
     echo -n $ENV_NAME
     echo -n $'\033[00m'
+    # Shell title
+    echo -n $'\033]0;venv:'
+    echo -n $ENV_NAME
+    echo -n $'\007'
   fi
 
   # Also setup our readline properly constantly since
