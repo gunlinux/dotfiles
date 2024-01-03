@@ -35,6 +35,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'klen/python-mode'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'mitsuhiko/vim-python-combined'
+Plugin 'davidhalter/jedi-vim'
 
 " --- html ---
 Plugin 'mattn/emmet-vim'
@@ -176,3 +177,11 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Python-jedi
+let g:jedi#goto_command = "<C-d>"
+let g:jedi#goto_definitions_command = "<C-D>"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "U"
+let g:jedi#completions_command = "<C-Space>"
+
