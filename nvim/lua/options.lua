@@ -12,9 +12,16 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.g.editorconfig = true 
 -- gui
-vim.opt.background = 'dark'
 vim.opt.termguicolors = true      --  24-bit RGB colors
-vim.cmd'colorscheme nightfly'
+vim.g.nightflyTransparent = true
+vim.cmd [[
+try
+  colorscheme nightfly
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+]]
 
 
 -- coc
@@ -28,3 +35,4 @@ vim.opt.updatetime = 300
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
+

@@ -35,7 +35,8 @@ vim.keymap.set('n', '<F8>', dap.step_over, {noremap = true})
 vim.keymap.set('n', '<leader><F10>', dap.repl.open, {noremap = true})
 vim.keymap.set('n', '<leader><F9>', dap.continue, {noremap = true})
 
-
+-- BufferLine
+vim.keymap.set('n', '<Leader>bl', ':BufferLinePick<CR>', {noremap=true})
 
 --lua require'dap'.toggle_breakpoint()
 --
