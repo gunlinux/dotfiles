@@ -33,7 +33,7 @@ Plug('nvim-tree/nvim-web-devicons')
 Plug('akinsho/bufferline.nvim')
 -- Plug('shaunsingh/solarized.nvim')
 
-Plug('bluz71/vim-nightfly-colors', { as= 'nightfly' })
+Plug('bluz71/vim-nightfly-colors', { as= 'nightfly'})
 
 vim.call('plug#end')
 
