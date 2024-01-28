@@ -4,7 +4,6 @@ vim.opt.nu = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
---vim.opt.backspace=indent,eol,start
 vim.opt.laststatus = 2
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
@@ -12,17 +11,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.g.editorconfig = true 
 -- gui
-vim.opt.termguicolors = true      --  24-bit RGB colors
-vim.g.nightflyTransparent = true
-vim.cmd [[
-try
-  colorscheme nightfly
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
-]]
-
+--vim.opt.termguicolors = true      --  24-bit RGB colors
+--vim.g.nightflyTransparent = true
 
 -- coc
 vim.opt.backup = false
