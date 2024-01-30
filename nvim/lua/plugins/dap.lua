@@ -1,41 +1,44 @@
 return {
   {
   'mfussenegger/nvim-dap',
+  dependencies = {
+    'rcarriga/nvim-dap-ui',
+    'mfussenegger/nvim-dap',
+    "theHamsta/nvim-dap-virtual-text",
+  },
   keys  = {
     { "<Leader>b",  function() require("dap").toggle_breakpoint() end, desc = "Stop" },
-    { "<F8>", function() require("dap").step_over() end, desc = "Stop" },
-    { "<Leader><F8>", function() require("dap").step_into() end, desc = "Stop" },
-    { "<Leader><F10>", function() require("dap").repl.open() end},
-    { "<Leader><F9>", function() require("dap").continue() end, desc = "Stop" },
-  }
-},
-{
-  'mfussenegger/nvim-dap-python',
-  dependencies = {
-    'mfussenegger/nvim-dap'
+    { "<Leader>N", function() require("dap").step_over() end, desc = "Stop" },
+    { "<Leader>n", function() require("dap").step_into() end, desc = "Stop" },
+    { "<Leader>D", function() require("dap").continue() end },
   },
   config = function()
-    require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-  end,
-},
-{
-  'nvim-telescope/telescope-dap.nvim',
-  dependencies = {
-    'nvim-telescope/telescope.nvim', 
-    'mfussenegger/nvim-dap',
+    local dap = require("dap")
+    local dapui = require("dapui")
+    local daptext = require("nvim-dap-virtual-text")
+
+    daptext.setup()
+    dapui.setup()
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated["dapui_config"] = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited["dapui_config"] = function()
+      dapui.close()
+    end
+  end
   },
-  config = function()
-    require('telescope').load_extension('dap')
-  end,
-},
-{
-  'rcarriga/nvim-dap-ui',
-  dependencies = {
-    'mfussenegger/nvim-dap'
+  {
+    'mfussenegger/nvim-dap-python',
+    ft = "python",
+    dependencies = {
+      'mfussenegger/nvim-dap'
+    },
+    config = function()
+      require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+    end,
   },
-  config = function()
-    require("dapui").setup()
-  end,
 }
 
-}
