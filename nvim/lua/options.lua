@@ -26,3 +26,18 @@ vim.opt.updatetime = 300
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
 
+local function map(mode, combo, mapping, opts)
+  local options = {noremap = true}
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, combo, mapping, options)
+end
+vim.g.mapleader = ' ' -- change the <leader> key to be comma
+
+map('n', '<Left>', ':bp<CR>', {noremap = true})
+map('n', '<Right>', ':bn<CR>', {noremap = true})
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>')
+
+
+
