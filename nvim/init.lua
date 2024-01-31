@@ -20,17 +20,14 @@ require("lazy").setup("plugins")
 
 
 require('options')
-require('coc')
+-- require('coc')
 
 -- after_party
 --https://www.ricalo.com/blog/install-powerline-windows/#
 --https://github.com/lsd-rs/lsd
 --
 --
---mkdir .virtualenvs
---cd .virtualenvs
---python -m venv debugpy
---debugpy/bin/python -m pip install debugpy
---
---debugpy/bin/python -m pip install debugpy
---
+--mkdir ~/.virtualenvs
+--cd ~/.virtualenvs
+--python3 -m venv debugpy
+--./debugpy/bin/python -m pip install debugpy
