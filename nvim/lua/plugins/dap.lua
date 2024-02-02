@@ -33,7 +33,7 @@ return {
         function()
           require("dap").continue()
         end,
-        desc = "Continue debug"
+        desc = "Continue debug",
       },
     },
     config = function()
