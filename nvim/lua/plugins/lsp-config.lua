@@ -1,36 +1,37 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end
-  },
-  {
+  "williamboman/mason.nvim",
+  dependencies = {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "pyright",
-        },
-        automatic_installation = true,
-      })
-      end
-  },
-  {
     "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.pyright.setup({})
+    "jay-babu/mason-null-ls.nvim",
+  },
+  config = function()
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "lua_ls",
+        "pyright",
+      },
+      automatic_installation = true,
+    })
 
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, {})
+    local mason_null_ls = require("mason-null-ls")
+    local lspconfig = require("lspconfig")
+    lspconfig.lua_ls.setup({})
+    lspconfig.pyright.setup({})
 
-    end,
-    --keys = {
-    -- {"<Leader><K>", function() vim.lsp.buf.hover , mode = { "n"} }
-    --},
-  }
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+    vim.keymap.set("n", "<Leader>gf", vim.lsp.buf.format, {})
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+    vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, {})
+
+    mason_null_ls.setup({
+      ensure_installed = {
+        "stylua",
+        "black",
+        "flake8",
+        "isort",
+      },
+    })
+  end,
 }
