@@ -12,27 +12,28 @@ return {
         function()
           require("dap").toggle_breakpoint()
         end,
-        desc = "Stop",
+        desc = "Toggle breakpoint",
       },
       {
         "<Leader>N",
         function()
           require("dap").step_over()
         end,
-        desc = "Stop",
+        desc = "Step over",
       },
       {
         "<Leader>n",
         function()
           require("dap").step_into()
         end,
-        desc = "Stop",
+        desc = "Step into",
       },
       {
-        "<Leader>D",
+        "F5",
         function()
           require("dap").continue()
         end,
+        desc = "Continue debug"
       },
     },
     config = function()
