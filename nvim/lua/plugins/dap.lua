@@ -29,7 +29,7 @@ return {
         desc = "Step into",
       },
       {
-        "F5",
+        "<F5>",
         function()
           require("dap").continue()
         end,
