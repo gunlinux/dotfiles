@@ -20,10 +20,12 @@ return {
     lspconfig.lua_ls.setup({})
     lspconfig.pyright.setup({})
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-    vim.keymap.set("n", "<Leader>gf", vim.lsp.buf.format, {})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-    vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, {})
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
+    vim.keymap.set("n", "<Leader>gf", vim.lsp.buf.format, { desc = "lsp format buffer" })
+    vim.keymap.set("n", "<Leader>gd", vim.lsp.buf.definition, { desc = "lsp go to definition" })
+    vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, { desc = "lsp conf action" })
+    vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, { desc = "lsp go to references" })
+    vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
     mason_null_ls.setup({
       ensure_installed = {
