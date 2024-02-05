@@ -1,4 +1,4 @@
-vim.opt.hidden= true
+vim.opt.hidden = true
 vim.opt.showcmd = true
 vim.opt.nu = true
 vim.opt.tabstop = 2
@@ -9,7 +9,8 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.g.editorconfig = true 
+vim.g.editorconfig = true
+vim.g.nightflyTransparent = true
 -- gui
 --vim.opt.termguicolors = true      --  24-bit RGB colors
 --vim.g.nightflyTransparent = true
@@ -27,17 +28,14 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 local function map(mode, combo, mapping, opts)
-  local options = {noremap = true}
+  local options = { noremap = true }
   if opts then
-    options = vim.tbl_extend('force', options, opts)
+    options = vim.tbl_extend("force", options, opts)
   end
   vim.api.nvim_set_keymap(mode, combo, mapping, options)
 end
-vim.g.mapleader = ' ' -- change the <leader> key to be comma
+vim.g.mapleader = " "
 
-map('n', '<Left>', ':bp<CR>', {noremap = true})
-map('n', '<Right>', ':bn<CR>', {noremap = true})
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>')
-
-
-
+map("n", "<Left>", ":bp<CR>", { noremap = true })
+map("n", "<Right>", ":bn<CR>", { noremap = true })
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
