@@ -31,6 +31,13 @@ return {
         desc = "Step into",
       },
       {
+        "<Leader>ds",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "dap ui toggle",
+      },
+      {
         "<F5>",
         function()
           require("dap").continue()
