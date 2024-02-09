@@ -1,10 +1,12 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    lazy = true,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
+      "mfussenegger/nvim-dap-python",
     },
     keys = {
       {
@@ -56,10 +58,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
+    lazy=true,
     config = function()
       require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
     end,
