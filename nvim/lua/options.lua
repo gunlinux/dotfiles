@@ -36,6 +36,6 @@ local function map(mode, combo, mapping, opts)
 end
 vim.g.mapleader = " "
 
-map("n", "<Left>", ":bp<CR>", { noremap = true })
-map("n", "<Right>", ":bn<CR>", { noremap = true })
+-- map("n", "<Left>", ":bp<CR>", { noremap = true })
+-- map("n", "<Right>", ":bn<CR>", { noremap = true })
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
