@@ -1,10 +1,12 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    lazy = true,
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
+      "mfussenegger/nvim-dap-python",
     },
     keys = {
       {
@@ -27,6 +29,13 @@ return {
           require("dap").step_into()
         end,
         desc = "Step into",
+      },
+      {
+        "<Leader>ds",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "dap ui toggle",
       },
       {
         "<F5>",
@@ -56,10 +65,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
+    lazy=true,
     config = function()
       require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
     end,
