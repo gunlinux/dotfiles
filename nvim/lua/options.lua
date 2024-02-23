@@ -1,4 +1,5 @@
 vim.opt.hidden = true
+
 vim.opt.showcmd = true
 vim.opt.nu = true
 vim.opt.tabstop = 2
@@ -38,4 +39,7 @@ vim.g.mapleader = " "
 
 map("n", "<Left>", ":bp<CR>", { noremap = true })
 map("n", "<Right>", ":bn<CR>", { noremap = true })
+
+vim.keymap.set({"n"}, "<F4>", ":split | terminal env python3 %<CR>", { noremap = true})
+vim.keymap.set({"n"}, "<F3>", ":bd!<CR>", { noremap = true})
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
