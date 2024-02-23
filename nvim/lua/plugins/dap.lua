@@ -17,14 +17,14 @@ return {
         desc = "Toggle breakpoint",
       },
       {
-        "<Leader>N",
+        "<F9>",
         function()
           require("dap").step_over()
         end,
         desc = "Step over",
       },
       {
-        "<Leader>n",
+        "<F8>",
         function()
           require("dap").step_into()
         end,
@@ -56,10 +56,10 @@ return {
         dapui.open()
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
+        -- dapui.close()
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
+        -- dapui.close()
       end
     end,
   },
