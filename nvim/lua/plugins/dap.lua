@@ -1,5 +1,4 @@
-return {
-  {
+return { {
     "mfussenegger/nvim-dap",
     lazy = true,
     dependencies = {
@@ -7,6 +6,7 @@ return {
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
       "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
     },
     keys = {
       {
@@ -139,9 +139,30 @@ return {
   },
   {
     "mfussenegger/nvim-dap-python",
-    lazy=true,
+    lazy = true,
     config = function()
       require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
     end,
   },
+  {
+    "leoluz/nvim-dap-go",
+    lazy = true,
+    config = function()
+      local dap = require("dap")
+      local go_conf = {
+        type = "go",
+        name = "Debug",
+        request = "launch",
+        program = "${file}",
+      }
+      dap.configurations.go = go_conf
+      dap.adapters.go = function(callback, config)
+        -- Wait for delve to start
+        vim.defer_fn(function()
+          callback({ type = "server", host = "127.0.0.1", port = "port" })
+        end, 100)
+      end
+      require("dap-go").setup(go_conf)
+    end,
+  }
 }
