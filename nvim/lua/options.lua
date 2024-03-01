@@ -40,3 +40,7 @@ vim.g.mapleader = " "
 vim.keymap.set({"n"}, "<F6>", ":split | terminal env python3 %<CR>", { noremap = true})
 vim.keymap.set({"n"}, "<F7>", ":bd!<CR>", { noremap = true})
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
+vim.keymap.set("n", "<C-h>", "<C-w><c-h>", { desc = "move focus left window" })
+vim.keymap.set("n", "<C-j>", "<C-w><c-j>", { desc = "move focus down window" })
+vim.keymap.set("n", "<C-k>", "<C-w><c-k>", { desc = "move focus up window" })
+vim.keymap.set("n", "<C-l>", "<C-w><c-l>", { desc = "move focus right window" })
