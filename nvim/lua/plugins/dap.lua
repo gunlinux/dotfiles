@@ -49,9 +49,83 @@ return {
       local dap = require("dap")
       local dapui = require("dapui")
       local daptext = require("nvim-dap-virtual-text")
+      local dapui_config = {
+        controls = {
+          element = "repl",
+          enabled = true,
+          icons = {
+            disconnect = "",
+            pause = "",
+            play = "",
+            run_last = "",
+            step_back = "",
+            step_into = "",
+            step_out = "",
+            step_over = "",
+            terminate = "",
+          },
+        },
+        element_mappings = {},
+        expand_lines = true,
+        floating = {
+          border = "single",
+          mappings = {
+            close = { "q", "<Esc>" },
+          },
+        },
+        force_buffers = true,
+        icons = {
+          collapsed = "",
+          current_frame = "",
+          expanded = "",
+        },
+        layouts = {
+          {
+            elements = {
+              {
+                id = "scopes",
+                size = 0.30,
+              },
+              {
+                id = "breakpoints",
+                size = 0.30,
+              },
+              {
+                id = "repl",
+                size = 0.30,
+              },
+            },
+            position = "left",
+            size = 35,
+          },
+          {
+            elements = {
+              {
+                id = "console",
+                size = 1,
+              },
+            },
+            position = "bottom",
+            size = 10,
+          },
 
+
+        },
+        mappings = {
+          edit = "e",
+          expand = { "<CR>", "<2-LeftMouse>" },
+          open = "o",
+          remove = "d",
+          repl = "r",
+          toggle = "t",
+		},
+		render = {
+			indent = 1,
+			max_value_lines = 100,
+		},
+	}
       daptext.setup()
-      dapui.setup()
+      dapui.setup(dapui_config)
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
