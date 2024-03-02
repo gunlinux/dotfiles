@@ -20,6 +20,7 @@ return {
     local lspconfig = require("lspconfig")
     lspconfig.lua_ls.setup({})
     lspconfig.pyright.setup({})
+    lspconfig.gopls.setup({})
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
     vim.keymap.set({"n", "v"}, "<Leader>gf", vim.lsp.buf.format, { desc = "lsp format buffer" })
