@@ -91,25 +91,24 @@ return { {
                 size = 0.30,
               },
               {
-                id = "repl",
+                id = "console",
                 size = 0.30,
               },
             },
             position = "left",
-            size = 35,
+            size = 30,
           },
           {
             elements = {
+
               {
-                id = "console",
+                id = "repl",
                 size = 1,
               },
             },
             position = "bottom",
-            size = 10,
+            size = 15,
           },
-
-
         },
         mappings = {
           edit = "e",
