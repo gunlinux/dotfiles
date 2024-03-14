@@ -11,12 +11,26 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.g.editorconfig = true
-vim.g.nightflyTransparent = true
--- gui
---vim.opt.termguicolors = true      --  24-bit RGB colors
---vim.g.nightflyTransparent = true
 
--- coc
+-- transparent
+vim.api.nvim_command('highlight Normal guibg=none')
+vim.api.nvim_command('highlight NonText guibg=none')
+vim.api.nvim_command('highlight LineNr guibg=none')
+vim.api.nvim_command('highlight CursorLineNr guibg=none')
+vim.api.nvim_command('highlight BufferLineFill guibg=none')
+vim.api.nvim_command('highlight SignColumn guibg=none')
+
+vim.api.nvim_command('highlight BufferCurrentMod guibg=none')
+vim.api.nvim_command('highlight BufferCurrentSign guibg=none')
+vim.api.nvim_command('highlight BufferCurrentTarget guibg=none')
+vim.api.nvim_command('highlight BufferCurrentIndex guibg=none')
+vim.api.nvim_command('highlight BufferCurrent guibg=none')
+vim.g.nightflyTransparent = true
+vim.g.termguicolors = true
+vim.opt.termguicolors = true      --  24-bit RGB colors
+
+
+-- backgu 
 vim.opt.backup = false
 vim.opt.writebackup = false
 
