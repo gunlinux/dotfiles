@@ -26,3 +26,4 @@ cp gitignore_global ~/.gitignore_global
 
 cp tmux.conf ~/.tmux.conf
 cp editorconfig ~/.editorconfig
+cp wezterm.lua ~/.wezterm.lua
