@@ -1,12 +1,15 @@
-return { {
+return {
+  {
     "mfussenegger/nvim-dap",
     lazy = true,
+    load = false,
+    event = "VeryLazy",
+    ft = { "python", "go" },
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
-      "mfussenegger/nvim-dap-python",
-      "leoluz/nvim-dap-go",
+      "nvim-neotest/nvim-nio",
     },
     keys = {
       {
@@ -117,12 +120,12 @@ return { {
           remove = "d",
           repl = "r",
           toggle = "t",
-		},
-		render = {
-			indent = 1,
-			max_value_lines = 100,
-		},
-	}
+        },
+        render = {
+          indent = 1,
+          max_value_lines = 100,
+        },
+      }
       daptext.setup()
       dapui.setup(dapui_config)
       dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -139,6 +142,7 @@ return { {
   {
     "mfussenegger/nvim-dap-python",
     lazy = true,
+    ft = "python",
     config = function()
       require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
     end,
@@ -146,6 +150,7 @@ return { {
   {
     "leoluz/nvim-dap-go",
     lazy = true,
+    ft = "go",
     config = function()
       local dap = require("dap")
       local go_conf = {
@@ -163,5 +168,5 @@ return { {
       end
       require("dap-go").setup(go_conf)
     end,
-  }
+  },
 }
