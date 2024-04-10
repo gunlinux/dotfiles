@@ -26,5 +26,6 @@ config.keys = {
   },
 }
 
+config.default_prog = {'bash'}
 -- and finally, return the configuration to wezterm
 return config
