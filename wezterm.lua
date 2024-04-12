@@ -11,18 +11,24 @@ config.color_scheme = 'Solarized Dark - Patched'
 config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = true
 
+
 config.window_background_opacity = 0.9
 config.hide_tab_bar_if_only_one_tab = true
 
 local dimmer = {
+  -- Darken the background image by reducing it to 1/3rd
   brightness = 0.03,
+
+  -- You can adjust the hue by scaling its value.
+  -- a multiplier of 1.0 leaves the value unchanged.
   hue = 1,
+
+  -- You can adjust the saturation also.
   saturation = 0.5,
 }
 
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-  -- setup specific for windows
   local wsl_domains = wezterm.default_wsl_domains()
 
   for _, dom in ipairs(wsl_domains) do
@@ -41,8 +47,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   }
 end
 
-if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-  -- setup specific for linux
+if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
+  config.window_background_opacity = 1
 end
 
 config.background = {
@@ -52,7 +58,7 @@ config.background = {
     },
     repeat_x = 'Mirror',
     hsb = dimmer,
-    attachment = { Parallax = 0.1 },
+    height = 'Cover',
   },
 }
 
@@ -65,6 +71,7 @@ config.keys = {
     action = wezterm.action.ToggleFullScreen,
   },
 }
+
 
 -- and finally, return the configuration to wezterm
 return config
