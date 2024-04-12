@@ -1,9 +1,7 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
     load = false,
-    event = "VeryLazy",
     ft = { "python", "go" },
     dependencies = {
       "rcarriga/nvim-dap-ui",
