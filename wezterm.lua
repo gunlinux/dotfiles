@@ -17,7 +17,7 @@ config.hide_tab_bar_if_only_one_tab = true
 
 local dimmer = {
   -- Darken the background image by reducing it to 1/3rd
-  brightness = 0.03,
+  brightness = 0.1,
 
   -- You can adjust the hue by scaling its value.
   -- a multiplier of 1.0 leaves the value unchanged.
@@ -58,8 +58,15 @@ config.background = {
     },
     repeat_x = 'Mirror',
     hsb = dimmer,
+    opacity = 0.7,
     height = 'Cover',
   },
+}
+
+config.window_background_gradient = {
+  colors = { '#002b36', '#000' },
+  -- Specifices a Linear gradient starting in the top left corner.
+  orientation = { Linear = { angle = -45.0 } },
 }
 
 config.keys = {
