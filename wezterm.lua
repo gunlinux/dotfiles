@@ -12,19 +12,19 @@ config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = true
 
 
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1
 config.hide_tab_bar_if_only_one_tab = true
 
 local dimmer = {
   -- Darken the background image by reducing it to 1/3rd
-  brightness = 0.1,
+  brightness = 0.05,
 
   -- You can adjust the hue by scaling its value.
   -- a multiplier of 1.0 leaves the value unchanged.
   hue = 1,
 
   -- You can adjust the saturation also.
-  saturation = 0.5,
+  saturation = 1,
 }
 
 
@@ -58,13 +58,13 @@ config.background = {
     },
     repeat_x = 'Mirror',
     hsb = dimmer,
-    opacity = 0.7,
+    opacity = 0.3,
     height = 'Cover',
   },
 }
 
 config.window_background_gradient = {
-  colors = { '#002b36', '#000' },
+  colors = { '#002b36', '#002b36', '#000' },
   -- Specifices a Linear gradient starting in the top left corner.
   orientation = { Linear = { angle = -45.0 } },
 }
