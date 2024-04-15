@@ -42,13 +42,6 @@ vim.opt.updatetime = 300
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
 
-local function map(mode, combo, mapping, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, combo, mapping, options)
-end
 vim.g.mapleader = " "
 
 vim.keymap.set({"n"}, "<F6>", ":split | terminal env python3 %<CR>", { noremap = true})
