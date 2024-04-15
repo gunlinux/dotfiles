@@ -54,4 +54,7 @@ vim.g.mapleader = " "
 vim.keymap.set({"n"}, "<F6>", ":split | terminal env python3 %<CR>", { noremap = true})
 vim.keymap.set({"n"}, "<F7>", ":bd!<CR>", { noremap = true})
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
+-- Переключение буферов через стрелочки
+vim.keymap.set({ "n", "v" }, "<c-Left>", ":bp<CR>")
+vim.keymap.set({ "n", "v" }, "<c-Right>", ":bn<CR>")
 
