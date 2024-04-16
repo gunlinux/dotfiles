@@ -1,7 +1,9 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" if not vim.loop.fs_stat(lazypath) then vim.fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
@@ -13,15 +15,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
+require("options")
 
-require('options')
--- require('coc')
-
--- after_party
---https://www.ricalo.com/blog/install-powerline-windows/#
---https://github.com/lsd-rs/lsd
---
---
 --mkdir ~/.virtualenvs
 --cd ~/.virtualenvs
 --python3 -m venv debugpy
