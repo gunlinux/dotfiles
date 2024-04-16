@@ -41,6 +41,10 @@ vim.opt.updatetime = 300
 -- diagnostics appeared/became resolved
 vim.opt.signcolumn = "yes"
 
+-- spaces
+vim.opt.list = true
+vim.opt.listchars="tab:»·,trail:·,nbsp:·"
+
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n" }, "<F6>", ":split | terminal env python3 %<CR>", { noremap = true })
