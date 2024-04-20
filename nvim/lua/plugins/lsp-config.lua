@@ -12,6 +12,11 @@ return {
         "lua_ls",
         "pyright",
         "gopls",
+        "html",
+        "cssls",
+        'bashls',
+        'jsonls',
+        'yamlls',
       },
       automatic_installation = true,
     })
