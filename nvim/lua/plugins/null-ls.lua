@@ -2,6 +2,7 @@ return {
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
+    "jay-babu/mason-null-ls.nvim",
   },
   ft = { "python", "vim", "lua" },
   config = function()
