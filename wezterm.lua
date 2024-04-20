@@ -79,6 +79,10 @@ config.keys = {
   },
 }
 
-
+config.font = wezterm.font_with_fallback {
+  { family = 'FiraCode Nerd Font', stretch = 'Expanded' },
+  { family = 'Symbola', stretch = 'Normal'},
+}
+config.font_size = 18.0
 -- and finally, return the configuration to wezterm
 return config
