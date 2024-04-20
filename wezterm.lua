@@ -49,6 +49,8 @@ end
 
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
+  config.default_prog = { "/usr/bin/bash" }
+
 end
 
 config.background = {
