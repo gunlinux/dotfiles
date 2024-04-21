@@ -24,6 +24,9 @@ cp gitignore_global ~/.gitignore_global
 
 # stuff
 
-cp tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 cp editorconfig ~/.editorconfig
 cp wezterm.lua ~/.wezterm.lua
+
+# tmux tpm manage
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
