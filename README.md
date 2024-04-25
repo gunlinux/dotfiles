@@ -3,14 +3,9 @@
 Some of them stealed from there https://github.com/mitsuhiko/dotfiles
 
 
-### Bash
+### Tmux, Bash, Nvim 
 
-![img](https://raw.githubusercontent.com/gunlinux/dotfiles/master/img/bash.png)
-
-
-### Vim
-
-![img](https://raw.githubusercontent.com/gunlinux/dotfiles/master/img/vim.png)
+![img](https://raw.githubusercontent.com/gunlinux/dotfiles/master/img/config.png)
 
 
 ### Deps
