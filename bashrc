@@ -7,8 +7,7 @@ __GRAY_COLOR="\[\e[37m\]"
 __PINK_COLOR="\[\e[35m\]"
 __GREEN_COLOR="\[\e[32m\]"
 __ORANGE_COLOR="\[\e[33m\]"
-__RED_COLOR="\[\e[31m\]"
-__BLUE_COLOR="\[\e[34m\]"
+__RED_COLOR="\[\e[31m\]" __BLUE_COLOR="\[\e[34m\]"
 
 
 if [ `id -u` == '0' ]; then
@@ -27,14 +26,18 @@ if [ -f  /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
   .  /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
+if [ -f  /usr/share/git/completion/git-prompt.sh ]; then
+  . /usr/share/git/completion/git-prompt.sh 
+fi
+
 if [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
 if type -t __git_ps1 | grep -q '^function$' 2>/dev/null; then
-  PS_GIT="\$(__git_ps1 \(%s\))$reset ${__END} "
+  PS_GIT="\$(__git_ps1 \(%s\))$reset${__END} "
 else
-  PS_GIT=""
+  PS_GIT="${__END} "
 fi
 export PS1="${__USER_COLOR}\u${reset}@\
 ${__ORANGE_COLOR}\h$reset in \
