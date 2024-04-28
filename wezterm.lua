@@ -49,6 +49,9 @@ end
 
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
+  if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
+    config.window_background_opacity = 0.7
+  end
   config.default_prog = { "/usr/bin/bash" }
 
 end
