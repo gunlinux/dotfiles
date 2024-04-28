@@ -1,0 +1,142 @@
+
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "height": 44,
+    "output": ["DP-1"],
+    "modules-left": [
+        "custom/logo",
+        "wlr/taskbar",
+        "wlr/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "memory",
+        "cpu",
+        "network",
+        "pulseaudio",
+        "custom/power"
+    ],
+    "wlr/workspaces": {
+      "format": "{name}: {icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "active": "",
+        "default": ""
+      },
+      "sort-by-number": true
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "WhiteSur",
+        "icon-size": 25,
+        "tooltip-format": "{title}"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "󰍛 {}%",
+        "max-length": 10
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "󰍛 {}%",
+        "min-length": 7,
+        "max-length": 10
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "format-alt": "  {:%a, %d %b %Y}",
+        "format": "  {:%H:%M:%S}"
+    },
+    "network": {
+        "format-wifi" : "{icon}",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "format-ethernet": "󰀂",
+	"format-alt" : "󱛇",
+        "format-disconnected" : "󰖪",
+	"tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+	"tooltip-format-disconnected": "Disconnected",
+	"interval": 5,
+	"nospacing": 1,
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} ",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "{icon} {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/logo": {
+        "format": "   btw i use arch",
+        "tooltip": false,
+        "on-click": "wofi -s ~/.config/wofi/menu.css --conf ~/.config/wofi/menu --show drun"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "Charged ",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "󰤆",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &"
+    }
+}
