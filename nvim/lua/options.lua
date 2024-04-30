@@ -51,3 +51,5 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 -- Переключение буферов через стрелочки
 vim.keymap.set({ "n", "v" }, "<c-Left>", ":bp<CR>")
 vim.keymap.set({ "n", "v" }, "<c-Right>", ":bn<CR>")
+-- it's over it's a game over, man. This is game over
+vim.keymap.set({ "n", "v", "i" }, "<leader><F10>", ":qall!<CR>")
