@@ -13,6 +13,7 @@
         "cpu",
         "pulseaudio",
         "custom/power",
+        "custom/online",
         "clock",
     ],
     "modules-right": [
@@ -34,7 +35,7 @@
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} ",
+        "format": "{icon}   {volume}%",
         "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": "{icon} {format_source}",
         "format-muted": "{format_source}",
@@ -50,6 +51,12 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/online": {
+      "format": " 🔴 <b>{}</b>",
+      "max-length": 30,
+      "interval": 5, // Remove this if your script is endless and write in loop
+      "exec": "$HOME/projects/viewer/venv/bin/python3  $HOME/projects/viewer/view.py 2> /dev/null" // Script in resources folder
     },
     "custom/logo": {
         "format": "I use , BTW ",
