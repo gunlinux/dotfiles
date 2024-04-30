@@ -47,6 +47,9 @@ vim.opt.listchars="tab:»·,trail:·,nbsp:·"
 
 vim.g.mapleader = " "
 
+--  Помощь не нужна
+vim.keymap.set({ "n", "v", "i" }, "<F1>", "<Nop>")
+
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 -- Переключение буферов через стрелочки
 vim.keymap.set({ "n", "v" }, "<c-Left>", ":bp<CR>")
