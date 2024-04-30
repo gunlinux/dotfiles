@@ -16,15 +16,27 @@ config.window_background_opacity = 1
 config.hide_tab_bar_if_only_one_tab = true
 
 local dimmer = {
-  -- Darken the background image by reducing it to 1/3rd
   brightness = 0.05,
-
-  -- You can adjust the hue by scaling its value.
-  -- a multiplier of 1.0 leaves the value unchanged.
   hue = 1,
-
-  -- You can adjust the saturation also.
   saturation = 1,
+}
+
+local default_background = {
+  {
+     source = {
+       File = wezterm.home_dir .. '/wall.jpg'
+     },
+     repeat_x = 'Mirror',
+     hsb = dimmer,
+     opacity = 0.4,
+     height = 'Cover',
+  },
+}
+
+local default_gradient = {
+  colors = { '#073642', '#002b36', '#073642', '#002b36',},
+  -- Specifices a Linear gradient starting in the top left corner.
+  orientation = { Linear = { angle = 0} },
 }
 
 
@@ -36,7 +48,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
       dom.default_prog = { '/bin/bash' }
     end
   end
-
+  config.background = default_background
+  config.window_background_gradient = default_gradient
   config.wsl_domains = wsl_domains
   config.default_domain = 'WSL:Ubuntu'
   config.window_padding = {
@@ -47,32 +60,22 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   }
 end
 
+if wezterm.target_triple == 'x86_64-apple-darwin' then
+  config.background = default_background
+  config.window_background_gradient = default_gradient
+end
+
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
   if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
-    config.window_background_opacity = 0.7
+    config.window_background_opacity = 0.8
+  else
+    config.background = default_background
+    config.window_background_gradient = default_gradient
   end
   config.default_prog = { "/usr/bin/bash" }
 
 end
-
-config.background = {
-  {
-    source = {
-      File = wezterm.home_dir .. '/wall.jpg'
-    },
-    repeat_x = 'Mirror',
-    hsb = dimmer,
-    opacity = 0.3,
-    height = 'Cover',
-  },
-}
-
-config.window_background_gradient = {
-  colors = { '#002b36', '#002b36', '#000' },
-  -- Specifices a Linear gradient starting in the top left corner.
-  orientation = { Linear = { angle = -45.0 } },
-}
 
 config.keys = {
   -- Turn off the default CMD-m Hide action, allowing CMD-m to
@@ -84,10 +87,15 @@ config.keys = {
   },
 }
 
-config.font = wezterm.font_with_fallback {
-  { family = 'FiraCode Nerd Font', stretch = 'Expanded' },
-  { family = 'Symbola', stretch = 'Normal'},
-}
-config.font_size = 18.0
--- and finally, return the configuration to wezterm
+wezterm.font_with_fallback({
+  {family="Operator Mono SSm Lig", weight="DemiLight"},
+  "Material Design Icons Desktop",
+  "JetBrains Mono",
+  "Noto Color Emoji",
+})
+
+config.font_size = 16.0
+--config.allow_squary_glypth_tro_overflow_width = "WhenFollowedBySpace"
+config.enable_wayland = false
+ -- and finally, return the configuration to wezterm
 return config
