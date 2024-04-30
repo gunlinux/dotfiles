@@ -33,3 +33,9 @@ alias u="sudo softwareupdate --install --all \
             && vim +PluginUpdate +qall"
 
 alias github-status="curl https://status.github.com/api/status.json"
+alias va="source ./venv/bin/activate"
+alias vd="deactivate"
+alias vc="python3 -m venv venv"
+
+alias tw="TERM=xterm-kitty twt"
+alias online="watch -n 3 -t ~/projects/viewer/venv/bin/python3 ~/projects/viewer/view.py"
