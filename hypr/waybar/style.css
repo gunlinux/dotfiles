@@ -58,6 +58,7 @@ window#waybar.hidden {
 }
 #memory,
 #custom-power,
+#custom-online,
 #battery,
 #backlight,
 #pulseaudio,
