@@ -56,3 +56,9 @@ vim.keymap.set({ "n", "v" }, "<c-Left>", ":bp<CR>")
 vim.keymap.set({ "n", "v" }, "<c-Right>", ":bn<CR>")
 -- it's over it's a game over, man. This is game over
 vim.keymap.set({ "n", "v", "i" }, "<leader><F10>", ":qall!<CR>")
+
+-- yank my buffer up
+vim.keymap.set({ "v" }, "<leader>y", '"+y')  -- E.g: <leader>yy will yank current line to os clipboard
+vim.keymap.set({ "v" }, "<leader>Y", '"+y$') -- E.g: <leader>yy will yank current line to os clipboard
+vim.keymap.set({ "n" }, "<leader>p", '"+p')  -- Paste after cursor from clipboard
+vim.keymap.set({ "n" }, "<leader>P", '"+P')  -- Paste before cursor from clipboard
