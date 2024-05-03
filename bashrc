@@ -57,3 +57,4 @@ export PATH="/usr/local/bin:$PATH"
 export EDITOR=vim
 export GIT_EDITOR=vim
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
