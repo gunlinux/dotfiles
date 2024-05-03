@@ -19,13 +19,10 @@ window#waybar {
   background-color: transparent;
   padding: 0;
   border-radius: 8px;
-  background-color: rgba(11, 11, 18, 0.5);
+  background-color: rgba(11, 11, 18, 0.8);
+  border: 2px solid rgba(5, 29, 34, 1);
   transition-property: background-color;
   transition-duration: 0.5s;
-}
-
-window#waybar.hidden {
-  opacity: 0.5;
 }
 
 #workspaces {
@@ -60,6 +57,7 @@ window#waybar.hidden {
 
 #taskbar {
 }
+
 #taskbar *:hover {
 }
 
@@ -75,10 +73,9 @@ window#waybar.hidden {
 #custom-logo,
 #tray {
   font-family: JetBrainsMono Nerd Font;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 1);
   padding: 6px 12px;
   margin: 6px 0;
-  /* $background-color: #1e1e2e; */
 }
 
 #custom-power {
