@@ -4,8 +4,8 @@
     "position": "top",
     "spacing": 0,
     "height": 44,
-    "width": 2550,
-    "margin-top": 5,
+    "width": 2538,
+    "margin-top": 6,
     "output": ["DP-1"],
     "modules-left": [
         "custom/logo",
