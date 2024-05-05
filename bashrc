@@ -58,3 +58,8 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+if command -v thefuck >/dev/null 2>&1; then
+  eval "$(thefuck --alias)"
+fi
+
