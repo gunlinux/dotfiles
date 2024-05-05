@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Solarized Dark - Patched'
 config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = false
+config.tab_max_width = 64
 config.exit_behavior = 'Close'
 
 
@@ -118,6 +119,32 @@ config.keys = {
     action = wezterm.action.ToggleFullScreen,
   },
 }
+
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+  -- Otherwise, use the title from the active pane
+  -- in that tab
+  return tab_info.active_pane.title
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width) 
+    local title = tab_title(tab)
+    -- ensure that the titles fit in the available space,
+    -- and that we have room for the edges.
+    title = wezterm.truncate_right(title, max_width - 2)
+    if tab.is_active then
+      return {
+        { Text = ' ' .. tab.title.. ' ' },
+      }
+    end
+    return { { Text = ' ' .. tab.tab_index + 1 .. ' ' }} end
+)
 
 wezterm.font_with_fallback({
   {family="Operator Mono SSm Lig", weight="DemiLight"},
