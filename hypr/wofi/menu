@@ -1,17 +1,19 @@
 # By knightfall01 on Github as a part of https://github.com/Knightfall01/Hyprland-config
 # Config for wofi-wifi-menu
+allow_images=false
+location=top
 
 # position values:
 # 1 2 3
 # 8 0 4
 # 7 6 5
-POSITION=3
+POSITION=2
 
 #y-offset
-YOFF=15
+YOFF=2
 
 #x-offset
-XOFF=-30
+XOFF=-1
 
 #fields to be displayed
 FIELDS=SSID,IN-USE,BARS,SECURITY

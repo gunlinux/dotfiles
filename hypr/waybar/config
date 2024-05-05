@@ -2,24 +2,22 @@
 {
     "layer": "top",
     "position": "top",
-    "spacing": 10,
+    "spacing": 0,
     "height": 44,
-    "width": 640,
+    "width": 2550,
     "margin-top": 5,
     "output": ["DP-1"],
     "modules-left": [
+        "custom/logo",
     ],
     "modules-center": [
-        "custom/logo",
+       "custom/online",
+       "clock",
+    ],
+    "modules-right": [
         "tray",
         "cpu",
         "pulseaudio",
-        "custom/power",
-        "custom/online",
-        "clock",
-    ],
-    "modules-right": [
-
     ],
     "cpu": {
         "interval": 5,
@@ -28,7 +26,7 @@
         "max-length": 10
     },
     "tray": {
-        "spacing": 10
+        "spacing": 5, 
     },
     "clock": {
         "interval": 1,
@@ -36,6 +34,7 @@
         "format-alt": "  {:%a, %d %b %Y}",
         "format": "  {:%H:%M:%S}"
     },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}   {volume}%",
@@ -57,7 +56,6 @@
     },
     "custom/online": {
       "format": " 🔴 {}",
-      "max-length": 30,
       "interval": 5, // Remove this if your script is endless and write in loop
       "exec": "$HOME/projects/viewer/venv/bin/python3  $HOME/projects/viewer/view.py 2> /dev/null" // Script in resources folder
     },
