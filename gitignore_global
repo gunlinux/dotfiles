@@ -3,7 +3,6 @@
 *.swo
 .DS_Store
 ._*
-tags
 tags.temp
 *.pyc
 bin/stubs
