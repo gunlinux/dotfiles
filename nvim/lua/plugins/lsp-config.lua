@@ -11,28 +11,17 @@ return {
       ensure_installed = {
         "lua_ls",
         "pyright",
-        "gopls",
-        "html",
-        "cssls",
-        'bashls',
-        'jsonls',
-        'yamlls',
-        'eslint',
+        "bashls",
         },
       automatic_installation = true,
     })
 
     local mason_null_ls = require("mason-null-ls")
     local lspconfig = require("lspconfig")
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     lspconfig.lua_ls.setup({})
     lspconfig.pyright.setup({})
-    lspconfig.gopls.setup({})
-    lspconfig.eslint.setup({capabilities=capabilities})
-    lspconfig.html.setup({})
-    lspconfig.json.setup({})
-    lspconfig.yaml.setup({})
+    -- lspconfig.gopls.setup({})
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
     vim.keymap.set({ "n", "v" }, "<Leader>gf", vim.lsp.buf.format, { desc = "lsp format buffer" })
@@ -47,7 +36,6 @@ return {
         "black",
         "flake8",
         "isort",
-        "eslint_d",
       },
     })
   end,
