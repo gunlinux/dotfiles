@@ -10,8 +10,11 @@ alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.ngin
 alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.restart='nginx.stop && nginx.start'
 
-
-alias ls="ls -G"
+if [ -x /usr/bin/eza ]; then
+  alias ls="EZA_COLORS=\"reset:*.txt=31\" eza --icons --color --git --header"
+else
+  alias ls="ls --colors=auto"
+fi
 
 
 # Lock screen
@@ -38,4 +41,4 @@ alias vd="deactivate"
 alias vc="python3 -m venv venv"
 
 alias tw="TERM=xterm-kitty twt"
-alias online="watch -n 3 -t ~/projects/viewer/venv/bin/python3 ~/projects/viewer/view.py"
+alias off-mon="wlr-randr --output DP-3 --off"
