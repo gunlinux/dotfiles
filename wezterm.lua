@@ -9,7 +9,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.color_scheme = 'Solarized Dark - Patched'
 config.audible_bell = "Disabled"
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
 config.tab_max_width = 64
 config.exit_behavior = 'Close'
 
@@ -84,32 +84,45 @@ end
 -- Adopts the current default fancy styling with more padding, more distinct tab outline, glyphs/buttons
 config.colors = {
   tab_bar = {
-    background = 'rgba(11,11,18,80%)',
+    inactive_tab_edge = 'rgba(0,0,0,0%)',
+    background = 'rgba(255,11,18,90%)',
+
     active_tab = {
-      bg_color = 'rgba(0,30,39, 80%)',
-      fg_color = '#708284',
+      bg_color = 'rgba(0, 32, 39, 100%)',
+      fg_color = 'rgba(172,160,162)',
     },
 
     inactive_tab = {
-      bg_color = 'rgba(0,0,0,70%)',
+      bg_color = 'rgba(0, 20, 29, 100%)',
       fg_color = 'rgba(112,130,132)',
     },
 
     inactive_tab_hover = {
-      bg_color = 'rgba(0,30,39, 100%)',
+      bg_color = 'rgba(0,30,39,100%)',
       fg_color = '#708284',
     },
 
     new_tab = {
-      bg_color = 'rgba(11,11,18,80%)',
-      fg_color = 'rgba(112, 130, 132, 100%)',
+      bg_color = 'rgba(11,11,18,0%)',
+      fg_color = 'rgba(198,28, 111, 100%)',
     },
 
     new_tab_hover = {
-      bg_color = 'rgba(0,30,39, 80%)',
-      fg_color = '#c61c6f',
+      bg_color = 'rgba(0,30,39, 0%)',
+      fg_color = 'rgba(198,28, 111, 100%)',
     },
   },
+}
+
+config.window_frame = {
+  font_size = 15.0,
+
+  -- The overall background color of the tab bar when
+  -- the window is focused
+  active_titlebar_bg = 'rgba(198,28,111, 0%)',
+  -- The overall background color of the tab bar when
+  -- the window is not focused
+  inactive_titlebar_bg = 'rgba(0,0,0,0%)',
 }
 
 config.keys = {
