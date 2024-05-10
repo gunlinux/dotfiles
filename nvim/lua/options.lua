@@ -27,6 +27,8 @@ vim.api.nvim_command("highlight BufferCurrentIndex guibg=none")
 vim.api.nvim_command("highlight BufferCurrent guibg=none")
 vim.g.nightflyTransparent = true
 vim.g.termguicolors = true
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
 vim.opt.termguicolors = true --  24-bit RGB colors
 
 -- backgu
