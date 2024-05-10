@@ -13,7 +13,7 @@ alias nginx.restart='nginx.stop && nginx.start'
 if [ -x /usr/bin/eza ]; then
   alias ls="EZA_COLORS=\"reset:*.txt=31\" eza --icons --color --git --header"
 else
-  alias ls="ls --colors=auto"
+  alias ls="ls --color=auto"
 fi
 
 

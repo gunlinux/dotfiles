@@ -39,9 +39,15 @@ if type -t __git_ps1 | grep -q '^function$' 2>/dev/null; then
 else
   PS_GIT="${__END} "
 fi
-export PS1="${__USER_COLOR}\u${reset}@\
-${__ORANGE_COLOR}\h$reset in \
-${__GREEN_COLOR}\w$reset $PS_GIT"
+
+if [ `hostname` = 'odin' ] && [ `whoami` == 'loki' ]; then
+  export user_host=""
+else
+  export user_host="${__USER_COLOR}\u${reset}@\
+${__ORANGE_COLOR}\h${reset} in "
+fi
+
+export PS1="${user_host}${__ORANGE_COLOR}\w$reset $PS_GIT"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
@@ -63,3 +69,6 @@ if command -v thefuck >/dev/null 2>&1; then
   eval "$(thefuck --alias)"
 fi
 
+if [ -f /usr/share/LS_COLORS/dircolors.sh ]; then
+  . /usr/share/LS_COLORS/dircolors.sh
+fi
