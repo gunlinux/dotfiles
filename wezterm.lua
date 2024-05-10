@@ -70,8 +70,10 @@ end
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
   if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
+    config.enable_wayland = true
     config.window_background_opacity = 0.8
   else
+    config.enable_wayland = false
     config.background = default_background
     config.window_background_gradient = default_gradient
   end
@@ -120,32 +122,6 @@ config.keys = {
   },
 }
 
-function tab_title(tab_info)
-  local title = tab_info.tab_title
-  -- if the tab title is explicitly set, take that
-  if title and #title > 0 then
-    return title
-  end
-  -- Otherwise, use the title from the active pane
-  -- in that tab
-  return tab_info.active_pane.title
-end
-
-wezterm.on(
-  'format-tab-title',
-  function(tab, tabs, panes, config, hover, max_width) 
-    local title = tab_title(tab)
-    -- ensure that the titles fit in the available space,
-    -- and that we have room for the edges.
-    title = wezterm.truncate_right(title, max_width - 2)
-    if tab.is_active then
-      return {
-        { Text = ' ' .. tab.title.. ' ' },
-      }
-    end
-    return { { Text = ' ' .. tab.tab_index + 1 .. ' ' }} end
-)
-
 wezterm.font_with_fallback({
   {family="Operator Mono SSm Lig", weight="DemiLight"},
   "Material Design Icons Desktop",
@@ -153,8 +129,6 @@ wezterm.font_with_fallback({
   "Noto Color Emoji",
 })
 
-config.font_size = 16.0
---config.allow_squary_glypth_tro_overflow_width = "WhenFollowedBySpace"
-config.enable_wayland = false
+config.font_size = 18.0
  -- and finally, return the configuration to wezterm
 return config
