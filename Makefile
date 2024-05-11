@@ -9,5 +9,5 @@ docker:
 	docker run -d --name dotfiles dotfiles:0.0.1
 
 docker-shell:
-	docker run --privileged -it dotfiles:0.0.1 
+	docker run -it dotfiles:0.0.1 
 
