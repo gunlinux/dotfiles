@@ -18,7 +18,6 @@ ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
 cp -f ~/dotfiles/bashrc ~/.bashrc
 
 # git
-
 ln -s gitconfig ~/.gitconfig
 ln -s gitignore_global ~/.gitignore_global
 
@@ -40,12 +39,12 @@ else
 fi
 
 # install deps
-if [ -f /etc/debian_version ]; then
-  $prefix apt install -y ripgrep tmux
+if [ -z "$DOCKER" ] && [ -f /etc/debian_version ]; then
+  $prefix apt install -y ripgrep tmux fd-find
 fi
 
 # deps for arch
-if [ -f /etc/arch-release ]; then
+if [ -z "$DOCKER" ] && [ -f /etc/arch-release ]; then
   echo "i use arch btw"
   $prefix pacman -S ripgrep eza tmux
 fi
