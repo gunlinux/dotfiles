@@ -12,6 +12,7 @@ config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = true
 config.tab_max_width = 64
 config.exit_behavior = 'Close'
+config.front_end = "WebGpu"
 
 
 config.window_background_opacity = 1
@@ -70,7 +71,6 @@ end
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
   if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
-    config.enable_wayland = true
     config.window_background_opacity = 0.8
   else
     config.enable_wayland = false
