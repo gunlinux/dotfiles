@@ -13,4 +13,6 @@ COPY  . /root/dotfiles
 RUN bash /root/dotfiles/go.sh 
 RUN npm install -g tree-sitter
 RUN python3 -m pip install neovim
+ENV LANG=en_US.UTF-8
+
 ENTRYPOINT ["/bin/bash"]

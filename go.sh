@@ -32,7 +32,6 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 # tmux tpm manage
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-~/.tmux/plugins/tpm/bin/install_plugins
 
 if [ "$EUID" -eq 0 ] ; then
   prefix=''
@@ -50,3 +49,5 @@ if [ -f /etc/arch-release ]; then
   echo "i use arch btw"
   $prefix pacman -S ripgrep eza tmux
 fi
+
+~/.tmux/plugins/tpm/bin/install_plugins
