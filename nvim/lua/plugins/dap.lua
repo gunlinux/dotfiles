@@ -1,7 +1,6 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    load = false,
     ft = { "python", "go" },
     dependencies = {
       "rcarriga/nvim-dap-ui",
