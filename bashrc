@@ -65,10 +65,6 @@ export GIT_EDITOR=vim
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-if command -v thefuck >/dev/null 2>&1; then
-  eval "$(thefuck --alias)"
-fi
-
 if [ -f /usr/share/LS_COLORS/dircolors.sh ]; then
   . /usr/share/LS_COLORS/dircolors.sh
 fi
