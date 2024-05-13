@@ -6,9 +6,9 @@
     "height": 44,
     "width": 2538,
     "margin-top": 6,
-    "output": ["DP-1"],
     "modules-left": [
         "custom/logo",
+        "hyprland/workspaces",
     ],
     "modules-center": [
        "custom/online",
@@ -17,13 +17,69 @@
     "modules-right": [
         "tray",
         "cpu",
+        "memory",
+        "temperature",
+        "network",
+        "battery",
         "pulseaudio",
+        "custom/notification",
     ],
-    "cpu": {
+
+    "memory": {
         "interval": 5,
-        "format": "󰍛 {}%",
+        "format": "{}% 󰍛",
         "min-length": 7,
         "max-length": 10
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{}% 󰍛",
+        "min-length": 7,
+        "max-length": 10
+    },
+    "battery": {
+      "format": "1{capacity}% {icon}",
+      "format-icons": ["", "", "", "", ""]
+    },
+    "temperature": {
+      // "thermal-zone": 2,
+      "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+      // "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C ",
+      "format": "{temperatureC}°C "
+    },
+    "network": {
+      "format": "{ifname}",
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ifname} ",
+      "format-disconnected": "", //An empty format will hide the module.
+      "format-disconnected": "",
+      "tooltip-format": "{ifname}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "{ifname} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "max-length": 50
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{icon}",
+      "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
     "tray": {
         "spacing": 5, 
@@ -37,7 +93,7 @@
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}   {volume}%",
+        "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": "{icon} {format_source}",
         "format-muted": "{format_source}",
@@ -63,4 +119,15 @@
         "format": "I use , BTW ",
         "tooltip": false,
     },
+    "hyprland/workspaces": {
+      "format": "{name}: {icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "active": "",
+        "default": ""
+      },
+    }
 }
