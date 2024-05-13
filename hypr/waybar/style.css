@@ -1,13 +1,6 @@
-/* THEMAN https://github.com/sameemul-haque/dotfiles/blob/mocha/.config/waybar/style.css  */
+@define-color widgetbg rgba(33, 118, 199, 0.3);
+@define-color panelbg rgba(11, 11, 18, 0.3);
 
-/* 
- * YOU CAN DEFINE COLORS NO WAY
- * @define-color black #000000;
-
-.class {
-    color: @black;
-}
- */
 * {
   border: none;
   border-radius: 0;
@@ -17,37 +10,54 @@
 
 window#waybar {
   padding: 0;
-  border-radius: 8px;
-  background-color: rgba(11, 11, 18, 0.3);
-  border: 2px solid rgba(33, 118, 199, 0.2);
+  border-radius: 10px;
+  background-color: @panelbg;
+  border: 1px solid rgba(33, 118, 199, 0.2);
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
 #workspaces {
   background-color: transparent;
+  margin-left: 5px;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
-  padding: 6px 18px;
-  border-radius: 4px;
-  background-color: #1e1e2e;
+  /*box-shadow: inset 0 -3px transparent;*/ /* Use box-shadow instead of border so the text isn't offset */
+  min-width: 36px;
+  font-size: 10px;
+  padding-right: 3px;
+  margin: 8px 0;
+  background-color: @widgetbg;
   color: #cdd6f4;
 }
 
+#workspaces button:nth-child(even) {
+  margin-right: 1px;
+}
+
+#workspaces button:first-child {
+  border-top-left-radius: 6px;
+  margin-right: 1px;
+}
+
+#workspaces button:last-child {
+  border-bottom-right-radius: 6px;
+}
+
 #workspaces button.active {
-  color: #1e1e2e;
-  background-color: #cdd6f4;
+  color: #cdd6f4;
+  background: rgba(33, 118, 199, 0.6);
+}
+
+#workspaces .active:hover {
 }
 
 #workspaces button:hover {
- box-shadow: inherit;
- text-shadow: inherit;
  color: #1e1e2e;
- background-color: #cdd6f4;
+ background-color: rgba(200, 200, 200, 0.8);
 }
 
 #workspaces button.urgent {
@@ -65,40 +75,63 @@ window#waybar {
 #custom-online,
 #backlight,
 #pulseaudio,
+#temperature,
+#battery,
 #network,
 #clock,
 #cpu,
 #custom-logo,
-#tray {
+#custom-notification {
   font-family: JetBrainsMono Nerd Font;
   color: rgba(255, 255, 255, 1);
-  padding: 6px 12px;
-  margin: 6px 0;
+  border-radius: 0px;
+  padding: 6px 6px;
+  background: @widgetbg;
+  margin: 8px 0;
+}
+#tray {
+  margin-right: 8px;
 }
 
-#custom-power {
-  margin-right: 6px;
+#clock,
+#custom-online {
+  min-width: 128px;
+  margin: 8px 4px;
+  padding: 0;
+  border-radius: 6px;
 }
 
+#custom-notification,
+#pulseaudio,
+#network,
 #custom-logo {
-  padding-right: 7px;
-  padding-left: 30px;
-  margin: 6px 0;
+  border-radius: 6px; 
+  margin: 8px 6px 8px 6px;
+  padding: 0 9px 0 8px;
+}
+#cpu {
   border-radius: 8px 0px 0px 8px;
-  color: #1793d1;
+  margin-left: 6px;
+  padding-right: 6px;
+  padding-left: 5px;
+  min-width: 75px;
+  padding: 0px;
 }
-
-#backlight {
-  background-color: #fab387;
+#memory {
+  padding-right: 0px;
+  border-left: 1px solid @panelbg;
+  padding-left: 0px;
 }
-
-#network {
-  background-color: #94e2d5;
+#temperature {
+  padding-left: 6px;
+  border-left: 1px solid @panelbg;
+  border-radius: 0px 8px 8px 0;
 }
-
-#custom-power {
-  background-color: #f2cdcd;
+#pulseaudio {
+  padding-right: 16px;
+  padding-left: 10px;
 }
+ 
 
 tooltip {
   border-radius: 10px;
@@ -107,44 +140,7 @@ tooltip {
 }
 
 tooltip label {
-    padding: 5px;
-    color: #fff;
-}
-
-#clock,
-#custom-online{
-    min-width: 140px;
-    background: rgba(33, 118, 199, 0.3);
-    padding-right: 0px;
-    padding-left: 0px;
-    border-radius: 8px;
-}
-
-#custom-online{
-    margin-right: 12px;
-}
-#tray, #memory, #cpu {
-  background: rgba(33, 118, 199, 0.3);
-  padding-right: 10px;
-  padding-left: 10px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-#pulseaudio {
-  background: rgba(33, 118, 199, 0.3);
-  margin: 0;
-  margin-right: 2px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  border-radius: 0 6px 6px 0;
-}
-
-#custom-logo {
-  margin: 2px;
-  background: rgba(33, 118, 199, 0.3);
-  border-radius: 6px 0 0 6px;
+  padding: 5px;
   color: #fff;
-  padding-left: 12px;
-  padding-right: 12px;
 }
+
