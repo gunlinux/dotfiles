@@ -81,7 +81,8 @@ window#waybar {
 #clock,
 #cpu,
 #custom-logo,
-#custom-notification {
+#custom-notification,
+#custom-nowplaying {
   font-family: JetBrainsMono Nerd Font;
   color: rgba(255, 255, 255, 1);
   border-radius: 0px;
@@ -104,7 +105,8 @@ window#waybar {
 #custom-notification,
 #pulseaudio,
 #network,
-#custom-logo {
+#custom-logo,
+#custom-nowplaying {
   border-radius: 6px; 
   margin: 8px 6px 8px 6px;
   padding: 0 9px 0 8px;

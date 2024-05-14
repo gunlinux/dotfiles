@@ -9,6 +9,7 @@
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
+        "custom/nowplaying",
     ],
     "modules-center": [
        "custom/online",
@@ -115,6 +116,12 @@
       "interval": 5, // Remove this if your script is endless and write in loop
       "exec": "$HOME/projects/viewer/venv/bin/python3  $HOME/projects/viewer/view.py 2> /dev/null" // Script in resources folder
     },
+    "custom/nowplaying": {
+        "format": "▶︎ {}",
+        "interval": 5, // Remove this if your script is endless and write in loop
+        "exec": "$HOME/dotfiles/hypr/waybar/scripts/now.sh"
+    },
+
     "custom/logo": {
         "format": "I use , BTW ",
         "tooltip": false,
