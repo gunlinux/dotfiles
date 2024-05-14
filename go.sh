@@ -49,4 +49,5 @@ if [ -z "$DOCKER" ] && [ -f /etc/arch-release ]; then
   $prefix pacman -S ripgrep eza tmux
 fi
 
+nvim --headless "+Lazy! sync" +qa
 ~/.tmux/plugins/tpm/bin/install_plugins
