@@ -1,14 +1,16 @@
 # Dockerfile - this is a comment. Delete me if you want.
-FROM debian:11
+FROM alpine 
 ENV LANG=en_US.UTF-8
+ENV DOCKER=1
+
 WORKDIR /root
-RUN apt-get update && apt-get install make curl ca-certificates git  unzip wget python3-pip python3-venv gcc tmux ripgrep fd-find -y && update-ca-certificates
+
+RUN apk update && apk add --no-cache gzip make curl git unzip wget py3-pip py3-virtualenv gcc tmux ripgrep fd bash neovim libc-dev
+
 # Node js install
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt install nodejs -y
-RUN npm install -g tree-sitter-cli
-RUN python3 -m pip install neovim
-RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && tar -C /opt -xzf nvim-linux64.tar.gz  && ln -sf /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+RUN apk add --no-cache nodejs npm --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main --allow-untrusted && python3 -m pip install --no-cache-dir  neovim --break-system-packages && rm -rf /var/cache/apk/*
 COPY  . /root/dotfiles
-RUN DOCKER=1 bash /root/dotfiles/go.sh
+
+RUN bash /root/dotfiles/go.sh
 
 ENTRYPOINT ["/bin/bash"]
