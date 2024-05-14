@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-reset="\[$(tput sgr0)\]"   # \e[0m
+reset="\033[0m"
 __DEFAULT_COLOR="\[\e[00m\]"
 __GRAY_COLOR="\[\e[37m\]"
 __PINK_COLOR="\[\e[35m\]"
