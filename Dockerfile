@@ -1,5 +1,5 @@
 # Dockerfile - this is a comment. Delete me if you want.
-FROM alpine 
+FROM alpine:3.19
 ENV LANG=en_US.UTF-8
 ENV DOCKER=1
 
