@@ -88,12 +88,12 @@ config.colors = {
     background = 'rgba(255,11,18,90%)',
 
     active_tab = {
-      bg_color = 'rgba(0, 32, 39, 100%)',
-      fg_color = 'rgba(172,160,162)',
+      bg_color = '#021A2A',
+      fg_color = "#c3ccdc",
     },
 
     inactive_tab = {
-      bg_color = 'rgba(0, 20, 29, 100%)',
+      bg_color = 'rgb(1,22,39, 100%)',
       fg_color = 'rgba(112,130,132)',
     },
 
