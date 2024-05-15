@@ -88,7 +88,7 @@ config.colors = {
     background = 'rgba(255,11,18,90%)',
 
     active_tab = {
-      bg_color = 'rgba(0, 32, 39, 100%)',
+      bg_color = '#001E27',
       fg_color = 'rgba(172,160,162)',
     },
 
