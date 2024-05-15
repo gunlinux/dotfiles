@@ -11,7 +11,7 @@ $character
 add_newline = false
 
 [directory]
-style = "fg:#fff"
+style = "fg:#82AAFF"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
