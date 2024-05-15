@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Solarized Dark - Patched'
+config.color_scheme = 'Nightfly (Gogh)'
 config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = true
 config.tab_max_width = 64
@@ -71,7 +71,7 @@ end
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
   if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
-    config.window_background_opacity = 0.8
+    config.window_background_opacity = 1
   else
     config.enable_wayland = false
     config.background = default_background
