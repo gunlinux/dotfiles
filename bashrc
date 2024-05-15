@@ -68,3 +68,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 if [ -f /usr/share/LS_COLORS/dircolors.sh ]; then
   . /usr/share/LS_COLORS/dircolors.sh
 fi
+
+if [ -x "$(command -v starship)" ]; then
+    eval "$(starship init bash)"
+fi
+
