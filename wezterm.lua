@@ -71,7 +71,7 @@ end
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then -- x86_64-unknown-linux-gnu
   config.window_background_opacity = 1
   if os.getenv 'XDG_SESSION_TYPE' == 'wayland' then
-    config.window_background_opacity = 1
+    config.window_background_opacity = 0.8
   else
     config.enable_wayland = false
     config.background = default_background
@@ -88,12 +88,12 @@ config.colors = {
     background = 'rgba(255,11,18,90%)',
 
     active_tab = {
-      bg_color = 'rgba(0, 32, 39, 100%)',
+      bg_color = '#1B2131',
       fg_color = 'rgba(172,160,162)',
     },
 
     inactive_tab = {
-      bg_color = 'rgba(0, 20, 29, 100%)',
+      bg_color = 'rgba(30, 30, 46, 100%)',
       fg_color = 'rgba(112,130,132)',
     },
 
