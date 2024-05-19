@@ -1,5 +1,4 @@
-@define-color widgetbg rgba(33, 118, 199, 0.3);
-@define-color panelbg rgba(11, 11, 18, 0.3);
+@define-color widgetbg rgba(1,22,39, 0.8);
 
 * {
   border: none;
@@ -11,15 +10,15 @@
 window#waybar {
   padding: 0;
   border-radius: 10px;
-  background-color: @panelbg;
-  border: 1px solid rgba(33, 118, 199, 0.2);
+  background-color: transparent;
+  border: 0;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
 
 #workspaces {
   background-color: transparent;
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 #workspaces button {
@@ -29,7 +28,7 @@ window#waybar {
   min-width: 36px;
   font-size: 10px;
   padding-right: 3px;
-  margin: 8px 0;
+  margin: 6px 0;
   background-color: @widgetbg;
   color: #cdd6f4;
 }
@@ -40,10 +39,12 @@ window#waybar {
 
 #workspaces button:first-child {
   border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
   margin-right: 1px;
 }
 
 #workspaces button:last-child {
+  border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 }
 
@@ -88,7 +89,7 @@ window#waybar {
   border-radius: 0px;
   padding: 6px 6px;
   background: @widgetbg;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 #tray {
   margin-right: 8px;
@@ -97,7 +98,8 @@ window#waybar {
 #clock,
 #custom-online {
   min-width: 128px;
-  margin: 8px 4px;
+  margin: 3px 4px;
+  font-size: 16px;
   padding: 0;
   border-radius: 6px;
 }
@@ -108,9 +110,22 @@ window#waybar {
 #custom-logo,
 #custom-nowplaying {
   border-radius: 6px; 
-  margin: 8px 6px 8px 6px;
+  margin: 6px;
   padding: 0 9px 0 8px;
 }
+
+#custom-logo {
+  margin-left: 8px;
+  font-size: 16px;
+  color:
+}
+
+#custom-notification {
+  margin-left: 0px;
+  padding-right: 15px;
+  margin-right: 8px;
+}
+
 #cpu {
   border-radius: 8px 0px 0px 8px;
   margin-left: 6px;
@@ -128,6 +143,7 @@ window#waybar {
   padding-left: 6px;
   border-left: 1px solid @panelbg;
   border-radius: 0px 8px 8px 0;
+  margin-right: 6px;
 }
 #pulseaudio {
   padding-right: 16px;
