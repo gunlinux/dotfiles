@@ -3,8 +3,7 @@
     "layer": "top",
     "position": "top",
     "spacing": 0,
-    "height": 44,
-    "width": 2538,
+    "height": 40,
     "margin-top": 6,
     "modules-left": [
         "custom/logo",
@@ -123,7 +122,7 @@
     },
 
     "custom/logo": {
-        "format": "I use , BTW ",
+        "format": "i use   btw ",
         "tooltip": false,
     },
     "hyprland/workspaces": {
