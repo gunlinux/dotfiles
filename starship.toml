@@ -5,7 +5,7 @@ $git_status\
 $nodejs\
 $rust\
 $golang\
-$python\n\
+$python\
 $character
 """
 add_newline = false
