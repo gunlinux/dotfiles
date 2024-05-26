@@ -13,4 +13,4 @@ COPY  . /root/dotfiles
 
 RUN bash /root/dotfiles/go.sh
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
