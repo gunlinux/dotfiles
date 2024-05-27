@@ -1,4 +1,6 @@
-format = """[🐺](fg:#090c0c)\
+format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -10,9 +12,26 @@ $character
 """
 add_newline = false
 
+[hostname]
+format = '@[$hostname]($style) '
+ssh_only = true 
+disabled = false
+
+[username]
+format = '[$user]($style)'
+style_user = 'white bold'
+style_root = 'black bold'
+disabled = false
+show_always = false 
+
+[character]
+success_symbol = "🐺 [❯](blue)"
+error_symbol = "😡 [❯](red)"
+
+
 [directory]
 style = "fg:#82AAFF"
-format = "[ $path ]($style)"
+format = "[$path]($style) "
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -163,7 +182,9 @@ format = '\[[$symbol$stack]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
-format = '\[[󰌠 ${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+format = '\[[󰌠 ${pyenv_prefix}(\($virtualenv\))]($style)\]'
+detect_extensions = []
+detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
 
 [raku]
 format = '\[[$symbol($version-$vm_version)]($style)\]'
@@ -194,9 +215,6 @@ format = '\[[$symbol$workspace]($style)\]'
 
 [time]
 format = '\[[$time]($style)\]'
-
-[username]
-format = '\[[$user]($style)\]'
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
