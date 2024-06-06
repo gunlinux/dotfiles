@@ -136,10 +136,20 @@ config.keys = {
 }
 
 wezterm.font_with_fallback({
-  {family="Operator Mono SSm Lig", weight="DemiLight"},
-  "Material Design Icons Desktop",
+  -- /usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Regular.ttf, FontConfig
   "JetBrains Mono",
+
+  -- /home/js/.local/share/fonts/Symbols-1000-em Nerd Font Complete.ttf, FontConfig
+  "Symbols Nerd Font",
+
+  -- /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf, FontConfig
+  -- Assumed to have Emoji Presentation
+  -- Pixel sizes: [128]
   "Noto Color Emoji",
+
+  -- <built-in>, BuiltIn
+  "Last Resort High-Efficiency",
+
 })
 
 config.font_size = 18.0
