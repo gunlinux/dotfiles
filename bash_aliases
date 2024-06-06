@@ -44,5 +44,5 @@ alias tw="TERM=xterm-kitty twt"
 alias off-mon="wlr-randr --output DP-3 --off"
 
 # nvim remote
-nvim_server="nvim --headless --listen 0.0.0.0:6666"
-nvim_client="nvim --remote-ui --server"
+alias nvim_server="nvim --headless --listen 0.0.0.0:6666"
+alias nvim_client="nvim --remote-ui --server"
