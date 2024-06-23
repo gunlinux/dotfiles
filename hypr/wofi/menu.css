@@ -10,8 +10,7 @@ window {
   border: #90cdfa;
   border: 3px solid #1e2030; 
   border: 3px solid rgba(192, 72, 113, 200);
-  //background: #1e2030;
-  background: rgba(5, 29, 34, 90);
+  background: rgba(1,22,39, 0.8);
   border-radius: 25px;
   opacity: 0.9;
 }
@@ -23,7 +22,7 @@ window {
   border: none;
   font-weight: bold;
   font-size: 30px;
-  background: #0A151B;
+  background: rgba(1,22,39, 1);
   color: #c4d3da;
   border-radius: 15px;
 }
@@ -66,7 +65,5 @@ window {
 }
 
 #entry:selected {
-  background: linear-gradient(90deg, #f222ff 0%, #8c1eff 80%);
-  background: rgba(5, 29, 34, 255);
-  background: #0A151B;
+  background: linear-gradient(90deg, #f222ff 20%, #8c1eff 50%);
 }
