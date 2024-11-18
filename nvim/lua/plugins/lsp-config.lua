@@ -3,7 +3,6 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "jay-babu/mason-null-ls.nvim",
   },
   config = function()
     require("mason").setup()
@@ -12,15 +11,37 @@ return {
         "lua_ls",
         "pyright",
         "bashls",
+        "gopls",
+        "ruff",
         },
       automatic_installation = true,
     })
 
-    local mason_null_ls = require("mason-null-ls")
     local lspconfig = require("lspconfig")
 
     lspconfig.lua_ls.setup({})
-    lspconfig.pyright.setup({})
+    lspconfig.pyright.setup({
+      settings = {
+          pyright = {
+            -- Using Ruff's import organizer
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              -- Ignore all files for analysis to exclusively use Ruff for linting
+              ignore = { '*' },
+            },
+          },
+        },
+    })
+    lspconfig.ruff.setup({
+      trace = 'messages',
+      init_options = {
+        settings = {
+          logLevel = 'debug',
+        }
+      }
+    })
     -- lspconfig.gopls.setup({})
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
@@ -30,13 +51,5 @@ return {
     vim.keymap.set("n", "<Leader>gr", vim.lsp.buf.references, { desc = "lsp go to references" })
     vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
-    mason_null_ls.setup({
-      ensure_installed = {
-        "stylua",
-        "black",
-        "flake8",
-        "isort",
-      },
-    })
-  end,
+    end,
 }
