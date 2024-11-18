@@ -69,7 +69,17 @@ if [ -f /usr/share/LS_COLORS/dircolors.sh ]; then
   . /usr/share/LS_COLORS/dircolors.sh
 fi
 
-if [ -x "$(command -v starship)" ]; then
-    eval "$(starship init bash)"
+if [ -n "$PYCHARM_JDK" ]; then
+  set s
+    #echo "PYCHARM_JDK is set to '$PYCHARM_JDK'"
+else
+  if [ -x "$(command -v starship)" ]; then
+      eval "$(starship init bash)"
+  fi
 fi
 
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent -a $XDG_RUNTIME_DIR/ssh-agent.socket)
+    ssh-add ~/.ssh/id_rsa
+fi

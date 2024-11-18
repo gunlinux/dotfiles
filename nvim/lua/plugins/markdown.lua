@@ -3,6 +3,11 @@ return {
 
     "tadmccorkle/markdown.nvim",
     ft = "markdown", -- or 'event = "VeryLazy"'
+    keys = {
+      { "<Leader>mo", "<CMD>MDListItemBelow<CR>", mode = { "n", "i" }, desc = "markdown list below" },
+      { "<Leader>mO", "<CMD>MDListItemAbove<CR>", mode = { "n", "i" }, desc = "markdown list below" },
+      { "<Leader>mt", "<CMD>MDTaskToggle<CR>", mode = { "n", "i" }, desc = "markdown task toggle" },
+    },
     opts = {
       -- configuration here or empty for defaults
     },

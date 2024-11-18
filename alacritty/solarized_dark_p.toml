@@ -1,0 +1,31 @@
+# Colors (Solarized Dark)
+
+# Default colors
+[colors.primary]
+
+background = '#002b36'
+background            #002b36
+
+# Normal colors
+[colors.normal]
+black   = '#002831'    # Black (Host)
+red     = '#D11C24'    # Red (Syntax string)
+green   = '#6CBE6C'    # Green (Command)
+yellow  = '#A57706'    # Yellow (Command second)
+blue    = '#2176C7'    # Blue (Path)
+magenta = '#C61C6F'    # Magenta (Syntax var)
+cyan    = '#259286'    # Cyan (Prompt)
+white   = '#EAE3CB'    # White
+
+# Bright colors
+[colors.bright]
+black   = '#006488'    # Bright Black
+red     = '#F5163B'    # Bright Red (Command error)
+green   = '#51EF84'    # Bright Green (Exec)
+yellow  = '#B27E28'    # Bright Yellow
+blue    = '#178EC8'    # Bright Blue (Folder)
+magenta = '#E24D8E'    # Bright Magenta
+cyan    = '#00B39E'    # Bright Cyan
+white   = '#FCF4DC'    # Bright White
+
+
