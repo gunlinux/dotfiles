@@ -83,3 +83,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     eval $(ssh-agent -a $XDG_RUNTIME_DIR/ssh-agent.socket)
     ssh-add ~/.ssh/id_rsa
 fi
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+# uv
+eval "$(uv generate-shell-completion bash)"
