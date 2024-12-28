@@ -10,8 +10,6 @@ return {
       ensure_installed = {
         "lua_ls",
         "pyright",
-        "bashls",
-        "gopls",
         "ruff",
         },
       automatic_installation = true,
@@ -42,7 +40,6 @@ return {
         }
       }
     })
-    -- lspconfig.gopls.setup({})
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
     vim.keymap.set({ "n", "v" }, "<Leader>gf", vim.lsp.buf.format, { desc = "lsp format buffer" })
