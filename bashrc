@@ -85,4 +85,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # uv
-eval "$(uv generate-shell-completion bash)"
+if [ -x "$(command -v uv)" ]; then
+  eval "$(uv generate-shell-completion bash)"
+fi
+
