@@ -59,7 +59,7 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="/home/loki/.local/bin:/usr/local/bin:$PATH"
 export EDITOR=vim
 export GIT_EDITOR=vim
 
