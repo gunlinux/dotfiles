@@ -1,0 +1,162 @@
+@define-color widgetbg rgba(0,30,38,0.8);
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 14px;
+}
+
+window#waybar {
+  padding: 0;
+  border-radius: 0px;
+  background-color: @widgetbg; 
+  border: 0;
+  transition-duration: 0.5s;
+}
+
+#workspaces {
+  background-color: transparent;
+  margin-left: 6px;
+}
+
+#workspaces button {
+  all: initial; /* Remove GTK theme values (waybar #1351) */
+  min-width: 0; /* Fix weird spacing in materia (waybar #450) */
+  /*box-shadow: inset 0 -3px transparent;*/ /* Use box-shadow instead of border so the text isn't offset */
+  min-width: 36px;
+  font-size: 10px;
+  padding-right: 3px;
+  margin: 6px 0;
+  background-color: @widgetbg;
+  color: #cdd6f4;
+}
+
+#workspaces button:nth-child(even) {
+  margin-right: 1px;
+}
+
+#workspaces button:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  margin-right: 1px;
+}
+
+#workspaces button:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+#workspaces button.active {
+  color: #cdd6f4;
+  background-color: @widgetbg;
+}
+
+#workspaces .active:hover {
+}
+
+#workspaces button:hover {
+ color: #1e1e2e;
+ background-color: rgba(200, 200, 200, 0.8);
+}
+
+#workspaces button.urgent {
+  background-color: #f38ba8;
+}
+
+#taskbar {
+}
+
+#taskbar *:hover {
+}
+
+#memory,
+#custom-power,
+#custom-online,
+#backlight,
+#pulseaudio,
+#temperature,
+#battery,
+#network,
+#clock,
+#cpu,
+#custom-logo,
+#custom-notification,
+#custom-nowplaying {
+  font-family: JetBrainsMono Nerd Font;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 0px;
+  padding: 6px 6px;
+  background: @widgetbg;
+  margin: 6px 0;
+}
+#tray {
+  margin-right: 8px;
+}
+
+#clock,
+#custom-online {
+  min-width: 128px;
+  margin: 3px 4px;
+  font-size: 16px;
+  padding: 0;
+  border-radius: 6px;
+}
+
+#custom-notification,
+#pulseaudio,
+#network,
+#custom-logo,
+#custom-nowplaying {
+  border-radius: 6px; 
+  margin: 6px;
+  padding: 0 9px 0 8px;
+}
+
+#custom-logo {
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+#custom-notification {
+  margin-left: 0px;
+  padding-right: 15px;
+  margin-right: 8px;
+}
+
+#cpu {
+  border-radius: 8px 0px 0px 8px;
+  margin-left: 6px;
+  padding-right: 6px;
+  padding-left: 5px;
+  min-width: 75px;
+  padding: 0px;
+}
+#memory {
+  padding-right: 0px;
+  border-left: 1px solid @panelbg;
+  padding-left: 0px;
+}
+#temperature {
+  padding-left: 6px;
+  border-left: 1px solid @panelbg;
+  border-radius: 0px 8px 8px 0;
+  margin-right: 6px;
+}
+#pulseaudio {
+  padding-right: 16px;
+  padding-left: 10px;
+}
+ 
+
+tooltip {
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #1e1e2e;
+}
+
+tooltip label {
+  padding: 5px;
+  color: #fff;
+}
+
