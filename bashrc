@@ -84,9 +84,5 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     ssh-add ~/.ssh/id_rsa
 fi
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-
 # uv
 eval "$(uv generate-shell-completion bash)"
