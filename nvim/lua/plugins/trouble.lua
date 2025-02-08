@@ -1,6 +1,5 @@
 return {
   "folke/trouble.nvim",
-  branch = "dev",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
       { "<Leader>xx", "<CMD>Trouble diagnostics toggle<CR>",  mode = { "n", "v" }, desc = "Telescope find file" },

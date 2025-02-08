@@ -45,7 +45,7 @@ vim.opt.signcolumn = "yes"
 
 -- spaces
 vim.opt.list = true
-vim.opt.listchars="tab:»·,trail:·,nbsp:·"
+vim.opt.listchars="tab:  ,trail:·,nbsp:·"
 
 vim.g.mapleader = " "
 
