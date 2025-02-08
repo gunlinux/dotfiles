@@ -8,7 +8,7 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "nightfly",
+        theme = "solarized_dark",
       },
     })
   end,
