@@ -3,7 +3,6 @@ root = true
 
 # Для всех файлов используем unix-совместимые переносы строк
 [*]
-
 # Используем табы для отступов (Не указываем размер)
 [*.css]
 indent_style = space
@@ -24,6 +23,13 @@ insert_final_newline = true
 [{package.json,.travis.yml}]
 indent_style = space
 indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+
+# однажды мы ворвемся в go
+[*.go]
+indent_style = tab
+indent_size = 2 
 end_of_line = lf
 insert_final_newline = true
 

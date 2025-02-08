@@ -7,6 +7,6 @@ return {
     require("bufferline").setup()
   end,
   keys = {
-    { "<Leader>lb", "<CMD>BufferLinePick<CR>", mode = { "n" }, desc = "bufferline pick" },
+    { "<Leader>b", "<CMD>BufferLinePick<CR>", mode = { "n" }, desc = "bufferline pick" },
   },
 }
