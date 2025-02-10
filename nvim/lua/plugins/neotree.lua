@@ -46,6 +46,6 @@ return {
   cmd = "Neotree",
 
   keys = {
-    { "<Leader><Tab>", "<CMD>Neotree toggle<CR>", mode = { "n", "v" } },
+    { "<Leader><Tab>", "<CMD>Neotree toggle<CR>", mode = { "n", "v" }, { desc = "Neotree" }},
   },
 }

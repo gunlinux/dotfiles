@@ -30,8 +30,14 @@ return {
         desc = "Toggle Breakpoint"
       },
       {
-        "<Leader><F5>",
+        "<F5>",
         "<CMD>DapContinue<CR>",
+        mode = { "n", "v" },
+        desc = "Dap Continue"
+      },
+      {
+        "<F7>",
+        "<CMD>DapStepInto<CR>",
         mode = { "n", "v" },
         desc = "Dap Continue"
       },
