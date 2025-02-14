@@ -3,7 +3,7 @@ import = [
     "~/.config/alacritty/NeoSolarized-dark.toml"
 ]
 
-# Window Customization 
+# Window Customization
 [window]
 padding = { x = 10, y = 10 }
 opacity = 0.9
@@ -13,17 +13,17 @@ blur = true
 size = 16.0
 #
 [font.bold]
-family = "NotoSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Bold"
 #
 [font.bold_italic]
-family = "NotoSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Bold Italic"
 #
 [font.italic]
-family = "NotoSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Italic"
 #
 [font.normal]
-family = "NotoSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font Mono"
 style = "Regular"
