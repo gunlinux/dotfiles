@@ -5,8 +5,10 @@ return {
     "neovim/nvim-lspconfig",
     "jay-babu/mason-nvim-dap.nvim",
     "mfussenegger/nvim-dap",
+    "saghen/blink.cmp",
   },
   config = function()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -44,6 +46,7 @@ return {
     local lspconfig = require("lspconfig")
 
     lspconfig.lua_ls.setup({
+      capabilities = capabilities,
       settings = {
         Lua = {
           runtime = {
@@ -69,8 +72,11 @@ return {
         },
       },
     })
-    lspconfig.gopls.setup({})
+    lspconfig.gopls.setup({
+      capabilities = capabilities,
+    })
     lspconfig.pyright.setup({
+      capabilities = capabilities,
       settings = {
           pyright = {
             -- Using Ruff's import organizer
