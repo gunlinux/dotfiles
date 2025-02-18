@@ -3,8 +3,6 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "jay-babu/mason-nvim-dap.nvim",
-    "mfussenegger/nvim-dap",
     "saghen/blink.cmp",
   },
   config = function()
@@ -20,84 +18,15 @@ return {
       automatic_installation = true,
     })
 
-    local python_path = table.concat({ vim.fn.stdpath('data'),  'mason', 'packages', 'debugpy', 'venv', 'bin', 'python'}, '/'):gsub('//+', '/')
-    require('mason-nvim-dap').setup({
-      ensure_installed = { "python", "delve" },
-      handlers = {
-        function(config)
-          -- Keep original functionality
-          require('mason-nvim-dap').default_setup(config)
-        end,
-
-        python = function(config)
-            config.adapters = {
-              type = "executable",
-              command = python_path,
-              args = {
-                "-m",
-                "debugpy.adapter",
-              },
-            }
-            require('mason-nvim-dap').default_setup(config) -- don't forget this!
-        end,
-      },
-    })
-
     local lspconfig = require("lspconfig")
+    local servers = require("lsp_servers")
+    for name, opts in pairs(servers) do
+      --opts.on_init = configs.on_init
+      --opts.on_attach = configs.on_attach
+      opts.capabilities = capabilities
 
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using
-            -- (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {
-              'vim',
-              'require'
-            },
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    })
-    lspconfig.gopls.setup({
-      capabilities = capabilities,
-    })
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      settings = {
-          pyright = {
-            -- Using Ruff's import organizer
-            disableOrganizeImports = true,
-          },
-          python = {
-            analysis = {
-              -- Ignore all files for analysis to exclusively use Ruff for linting
-              ignore = { '*' },
-            },
-          },
-        },
-    })
-    lspconfig.ruff.setup({
-      trace = 'messages',
-      init_options = {
-        settings = {
-          logLevel = 'debug',
-        }
-      }
-    })
+      lspconfig[name].setup(opts)
+    end
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
     vim.keymap.set({ "n", "v" }, "<Leader>cf", vim.lsp.buf.format, { desc = "lsp format buffer" })
