@@ -1,5 +1,5 @@
 # Dockerfile - this is a comment. Delete me if you want.
-FROM node:23-alpine3.20
+FROM node:23-alpine3.21
 ENV LANG=en_US.UTF-8
 ENV DOCKER=1
 
