@@ -13,6 +13,9 @@ return {
         "markdown_inline",
         "vimdoc",
         "regex",
+        "go",
+        "html",
+        "javascript",
       },
 
       auto_install = true,
