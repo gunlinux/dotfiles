@@ -4,9 +4,11 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
+    "ray-x/lsp_signature.nvim",
   },
   config = function()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
+
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -14,7 +16,7 @@ return {
         "pyright",
         "ruff",
         "gopls",
-        },
+      },
       automatic_installation = true,
     })
 
@@ -22,7 +24,7 @@ return {
     local servers = require("lsp_servers")
     for name, opts in pairs(servers) do
       --opts.on_init = configs.on_init
-      --opts.on_attach = configs.on_attach
+      opts.on_attach = require "lsp_signature".on_attach
       opts.capabilities = capabilities
 
       lspconfig[name].setup(opts)
@@ -34,6 +36,5 @@ return {
     vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, { desc = "lsp conf action" })
     vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.references, { desc = "lsp go to references" })
     vim.keymap.set("n", "<Leader>cn", vim.lsp.buf.rename, { desc = "lsp rename" })
-
   end,
 }
