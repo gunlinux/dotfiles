@@ -2,7 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "bluz71/vim-nightfly-colors",
+    --"bluz71/vim-nightfly-colors",
   },
   config = function()
     require("lualine").setup({

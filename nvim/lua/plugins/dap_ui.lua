@@ -1,12 +1,14 @@
 return {
   {
+    event = "VeryLazy",
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
       "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",
     },
-    config = function ()
-      local python_path = table.concat({ vim.fn.stdpath('data'),  'mason', 'packages', 'debugpy', 'venv', 'bin', 'python'}, '/'):gsub('//+', '/')
+    config = function()
+      local python_path = table.concat(
+      { vim.fn.stdpath('data'), 'mason', 'packages', 'debugpy', 'venv', 'bin', 'python' }, '/'):gsub('//+', '/')
       require('mason-nvim-dap').setup({
         ensure_installed = { "python", "delve" },
         handlers = {
@@ -16,21 +18,22 @@ return {
           end,
 
           python = function(config)
-              config.adapters = {
-                type = "executable",
-                command = python_path,
-                args = {
-                  "-m",
-                  "debugpy.adapter",
-                },
-              }
-              require('mason-nvim-dap').default_setup(config) -- don't forget this!
+            config.adapters = {
+              type = "executable",
+              command = python_path,
+              args = {
+                "-m",
+                "debugpy.adapter",
+              },
+            }
+            require('mason-nvim-dap').default_setup(config)   -- don't forget this!
           end,
         },
       })
     end,
   },
   {
+    event = "VeryLazy",
     "rcarriga/nvim-dap-ui",
     dependencies = {
       "mfussenegger/nvim-dap",
@@ -88,4 +91,3 @@ return {
     },
   }
 }
-
