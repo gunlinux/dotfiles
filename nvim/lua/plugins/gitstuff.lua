@@ -20,7 +20,7 @@ return {
     end,
     keys = {
       {
-        "<Leader>gl",
+        "<Leader>gb",
         "<CMD>GitBlameToggle<CR>",
         mode = { "n" },
         desc = "Git Blame Toggle"
