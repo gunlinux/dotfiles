@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -13,11 +14,15 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins")
+require("lazy").setup({
+   spec = {
+    -- import your plugins
+    { import = "plugins" },
+  },
+  rocks = {
+    enabled = false,
+  },
+})
 
 require("options")
 
---mkdir ~/.virtualenvs
---cd ~/.virtualenvs
---python3 -m venv debugpy
---./debugpy/bin/python -m pip install debugpy
