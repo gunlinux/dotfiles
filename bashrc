@@ -51,7 +51,6 @@ export PS1="${user_host}${__ORANGE_COLOR}\w$reset $PS_GIT"
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 
-export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
@@ -64,10 +63,6 @@ export EDITOR=vim
 export GIT_EDITOR=vim
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
-if [ -f /usr/share/LS_COLORS/dircolors.sh ]; then
-  . /usr/share/LS_COLORS/dircolors.sh
-fi
 
 if [ -n "$PYCHARM_JDK" ]; then
   set s
@@ -89,3 +84,7 @@ if [ -x "$(command -v uv)" ]; then
   eval "$(uv generate-shell-completion bash)"
 fi
 
+# dircolors
+if [ -x "$(command -v dircolors)" ]; then
+  eval `dircolors ~/dotfiles/colors/dircolors`
+fi
