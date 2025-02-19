@@ -2,6 +2,8 @@
 return {
   "folke/snacks.nvim",
   ---@type snacks.Config
+  lazy = false,
+  priority = 1000,
   opts = {
     dashboard = {
       -- your dashboard configuration comes here
