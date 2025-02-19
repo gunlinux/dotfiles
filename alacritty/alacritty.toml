@@ -3,6 +3,9 @@ import = [
     "~/.config/alacritty/NeoSolarized-dark.toml"
 ]
 
+[env]
+  TERM = "xterm-256color"
+
 # Window Customization
 [window]
 padding = { x = 10, y = 10 }
