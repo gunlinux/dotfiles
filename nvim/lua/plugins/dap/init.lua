@@ -5,6 +5,7 @@ return {
     "williamboman/mason.nvim",
     "nvim-neotest/nvim-nio",
     "jay-babu/mason-nvim-dap.nvim",
+    "theHamsta/nvim-dap-virtual-text",
     { "igorlfs/nvim-dap-view", opts = require('plugins.dap.dapview_config') },
   },
   config = function()
@@ -51,6 +52,7 @@ return {
       --
       dapui.close()
     end
+    require("nvim-dap-virtual-text").setup {}
   end,
   -- dap binds
   keys = {
