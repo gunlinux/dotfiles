@@ -35,7 +35,6 @@ return {
 		})
 		--require("dapui").setup()
 		local dap, dapui = require("dap"), require("dap-view")
-		dap.defaults.fallback.terminal_win_cmd = nil
 		dap.listeners.before.attach.dapui_config = function()
 			--daopui.open()
 			dapui.open()
@@ -54,6 +53,12 @@ return {
 			dapui.close()
 		end
 		require("nvim-dap-virtual-text").setup({})
+		vim.api.nvim_create_autocmd({ "FileType" }, {
+			pattern = { "dap-view", "dap-view-term", "dap-repl", "dap-terminal"}, -- dap-repl is set by `nvim-dap`
+			callback = function(evt)
+				vim.keymap.set("n", "q", "<C-w>q", { silent = true, buffer = evt.buf })
+			end,
+		})
 	end,
 	-- dap binds
 	keys = {
