@@ -5,7 +5,7 @@ return {
     "williamboman/mason.nvim",
     "nvim-neotest/nvim-nio",
     "jay-babu/mason-nvim-dap.nvim",
-    { "igorlfs/nvim-dap-view", opts = require('dapview_config') },
+    { "igorlfs/nvim-dap-view", opts = require('plugins.dap.dapview_config') },
   },
   config = function()
     local python_path = table.concat(

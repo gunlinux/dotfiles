@@ -22,7 +22,7 @@ return {
     })
 
     local lspconfig = require("lspconfig")
-    local servers = require("lsp_servers")
+    local servers = require("plugins.lsp.lsp_servers")
     for name, opts in pairs(servers) do
       --opts.on_init = configs.on_init
       opts.on_attach = require "lsp_signature".on_attach

@@ -18,11 +18,14 @@ require("lazy").setup({
    spec = {
     -- import your plugins
     { import = "plugins" },
+
   },
   rocks = {
     enabled = false,
   },
+  install = { colorscheme = { "NeoSolarized" } },
 })
 
-require("options")
+require("config.options")
+require("config.keymaps")
 
