@@ -23,7 +23,6 @@ vim.opt.signcolumn = "yes"
 
 -- spaces
 vim.opt.list = true
-vim.opt.listchars="tab:  ,trail:·,nbsp:·"
 
 vim.g.termguicolors = true
 vim.g.loaded_perl_provider = 0
