@@ -13,7 +13,7 @@ opacity = 0.9
 blur = true
 
 [font]
-size = 18.0
+size = 16.0
 #
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"
