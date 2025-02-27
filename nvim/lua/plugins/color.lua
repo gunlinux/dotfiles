@@ -1,12 +1,17 @@
 return {
-  "Tsuzat/NeoSolarized.nvim",
-  lazy = false,   -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
+  "craftzdog/solarized-osaka.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
   config = function()
-    require("NeoSolarized").setup({
+    require("solarized-osaka").setup({
       style = "dark", -- "dark" or "light"
       transparent = true,
     })
-    vim.cmd([[ colorscheme NeoSolarized ]])
+    require('mini.animate').setup({
+      open = { enable = false },
+      close = { enable = false },
+    })
+    vim.cmd[[colorscheme solarized-osaka]]
   end,
 }
