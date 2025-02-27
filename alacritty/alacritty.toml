@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/NeoSolarized-dark.toml"
+    "~/.config/alacritty/solarized_osaka.toml"
 ]
 
 [env]
