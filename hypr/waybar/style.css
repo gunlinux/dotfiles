@@ -1,4 +1,11 @@
-@define-color widgetbg rgba(0,30,38,0.8);
+@define-color panelbg rgba(0, 20, 25, 0.8);
+@define-color widgetbg rgba(0, 20, 25, 0);
+@define-color widgetfg rgba(131, 148, 149, 1);
+@define-color wsbg #002c38;
+@define-color wsfg rgba(131, 148, 149, 1);
+@define-color wsbgactive #002c38;
+@define-color wsfgactive #fff;
+
 
 * {
   border: none;
@@ -10,7 +17,7 @@
 window#waybar {
   padding: 0;
   border-radius: 0px;
-  background-color: @widgetbg; 
+  background-color: @panelbg;
   border: 0;
   transition-duration: 0.5s;
 }
@@ -26,10 +33,9 @@ window#waybar {
   /*box-shadow: inset 0 -3px transparent;*/ /* Use box-shadow instead of border so the text isn't offset */
   min-width: 36px;
   font-size: 10px;
-  padding-right: 3px;
   margin: 6px 0;
-  background-color: @widgetbg;
-  color: #cdd6f4;
+  background-color: @wsbg;
+  color: @wsfg;
 }
 
 #workspaces button:nth-child(even) {
@@ -47,21 +53,25 @@ window#waybar {
   border-bottom-right-radius: 6px;
 }
 
-#workspaces button.active {
-  color: #cdd6f4;
-  background-color: @widgetbg;
+#workspaces .active {
+  color: @wsfgactive;
+  background-color: @wsbgactive;
 }
 
 #workspaces .active:hover {
 }
 
 #workspaces button:hover {
+  /*
  color: #1e1e2e;
+ */
  background-color: rgba(200, 200, 200, 0.8);
 }
 
 #workspaces button.urgent {
+  /*
   background-color: #f38ba8;
+  */
 }
 
 #taskbar {
@@ -84,7 +94,9 @@ window#waybar {
 #custom-notification,
 #custom-nowplaying {
   font-family: JetBrainsMono Nerd Font;
+  /*
   color: rgba(255, 255, 255, 1);
+  */
   border-radius: 0px;
   padding: 6px 6px;
   background: @widgetbg;
@@ -96,6 +108,7 @@ window#waybar {
 
 #clock,
 #custom-online {
+  color: #fff;
   min-width: 128px;
   margin: 3px 4px;
   font-size: 16px;
@@ -114,6 +127,7 @@ window#waybar {
 }
 
 #custom-logo {
+  color: @wsfgactive;
   margin-left: 8px;
   font-size: 16px;
 }
@@ -152,11 +166,15 @@ window#waybar {
 tooltip {
   border-radius: 10px;
   padding: 15px;
+  /*
   background-color: #1e1e2e;
+  */
 }
 
 tooltip label {
   padding: 5px;
+  /*
   color: #fff;
+  */
 }
 

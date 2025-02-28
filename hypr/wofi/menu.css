@@ -8,11 +8,9 @@
 
 window {
   border: #90cdfa;
-  border: 3px solid #1e2030; 
-  border: 3px solid rgba(192, 72, 113, 200);
-  background: rgba(1,22,39, 0.8);
+  border: 3px solid #268db2;
   border-radius: 25px;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 #input {
@@ -22,7 +20,7 @@ window {
   border: none;
   font-weight: bold;
   font-size: 30px;
-  background: rgba(1,22,39, 1);
+  background: #001a1d;
   color: #c4d3da;
   border-radius: 15px;
 }
@@ -65,5 +63,5 @@ window {
 }
 
 #entry:selected {
-  background: linear-gradient(90deg, #f222ff 20%, #8c1eff 50%);
+  background: linear-gradient(90deg, #d33682ff 20%, #8c1eff 50%);
 }
