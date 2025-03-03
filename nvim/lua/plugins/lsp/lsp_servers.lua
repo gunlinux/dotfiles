@@ -1,6 +1,6 @@
 return {
   --html = {},
-  --bashls = {},
+  bashls = {},
   gopls = {},
   ruff = {
     trace = "messages",
@@ -19,6 +19,7 @@ return {
       },
     },
   },
+  jsonls = {},
   pyright = {
     settings = {
       pyright = {
