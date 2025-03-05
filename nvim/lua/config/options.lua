@@ -27,4 +27,6 @@ vim.opt.list = true
 vim.g.termguicolors = true
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
+-- command autocomplete
+vim.g.wildmenu = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
