@@ -2,6 +2,7 @@ return {
   {
 
     "tadmccorkle/markdown.nvim",
+    event = "User FilePost",
     ft = "markdown", -- or 'event = "VeryLazy"'
     keys = {
       { "<Leader>mo", "<CMD>MDListItemBelow<CR>", mode = { "n" }, desc = "markdown list below" },
@@ -13,6 +14,8 @@ return {
     },
   },
   {
+    event = "User FilePost",
+    ft = "markdown", -- or 'event = "VeryLazy"'
     "MeanderingProgrammer/markdown.nvim",
     name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
     dependencies = { "nvim-treesitter/nvim-treesitter" },

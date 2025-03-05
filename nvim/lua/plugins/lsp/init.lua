@@ -5,6 +5,7 @@ return {
     "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
   },
+  cmd = { "Mason", "MasonInstall", "MasonUpdate" },
   config = function()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 

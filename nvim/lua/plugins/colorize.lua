@@ -2,11 +2,11 @@ return {
     "catgoose/nvim-colorizer.lua",
     event = "BufReadPre",
     opts = {
-        filetypes = { "*" },
+        filetypes = { "css", "config", "lua" },
         user_default_options = {
           RGB = true, -- #RGB hex codes
           RRGGBB = true, -- #RRGGBB hex codes
-          names = true, -- "Name" codes like Blue or blue
+          names = false, -- "Name" codes like Blue or blue
           RRGGBBAA = true, -- #RRGGBBAA hex codes
           AARRGGBB = true, -- 0xAARRGGBB hex codes
           rgb_fn = true, -- CSS rgb() and rgba() functions
