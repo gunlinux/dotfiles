@@ -1,8 +1,8 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.2",
     dependencies = "nvim-lua/plenary.nvim",
+    event = "VeryLazy",
     cmd = "Telescope",
     keys = {
       { "<Leader>ff", "<CMD>Telescope find_files<CR>",  mode = { "n", "v" }, desc = "Telescope find file" },
@@ -16,6 +16,7 @@ return {
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
+    event = "VeryLazy",
     config = function()
       local telescope = require("telescope")
       telescope.setup({

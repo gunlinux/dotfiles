@@ -8,10 +8,12 @@ return {
       style = "dark", -- "dark" or "light"
       transparent = true,
     })
+    --[[
     require('mini.animate').setup({
       open = { enable = false },
       close = { enable = false },
     })
+    ]]--
     vim.cmd[[colorscheme solarized-osaka]]
   end,
 }
