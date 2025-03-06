@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
+  event = "User FilePost",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -9,9 +9,13 @@ return {
   config = function()
     require("neo-tree").setup({
       close_if_last_window = true,
+      popup_border_style = "rounded",
+        window = {
+          position = "right",
+        },
       default_component_configs = {
         container = {
-          enable_character_fade = false,
+          enable_character_fade = true,
           modified = {
             symbol = "✚",
             highlight = "NeoTreeModified",

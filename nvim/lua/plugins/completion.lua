@@ -1,10 +1,11 @@
 return {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
-  dependencies = "rafamadriz/friendly-snippets",
+  -- dependencies = "rafamadriz/friendly-snippets",
 
   -- use a release tag to download pre-built binaries
   version = "*",
+  event = "InsertEnter",
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- If you use nix, you can build from source using latest nightly rust with:
@@ -24,7 +25,7 @@ return {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
       -- Useful for when your theme doesn't support blink.cmp
       -- Will be removed in a future release
-      use_nvim_cmp_as_default = true,
+      use_nvim_cmp_as_default = false,
       -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
       -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = "mono",
@@ -36,5 +37,5 @@ return {
       default = { "lsp", "path", "snippets", "buffer" },
     },
   },
-  opts_extend = { "sources.default" },
+  -- opts_extend = { "sources.default" },
 }

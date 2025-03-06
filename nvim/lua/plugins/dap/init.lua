@@ -1,5 +1,5 @@
 return {
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   "mfussenegger/nvim-dap",
   dependencies = {
     "williamboman/mason.nvim",

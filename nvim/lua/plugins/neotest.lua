@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neotest/neotest",
+    event = "User FilePost",
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
