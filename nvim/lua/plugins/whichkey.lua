@@ -15,7 +15,6 @@ return {
     wk.add({
       { "<leader>f",     desc = "telescope", group = "telescope" },
       { "<leader>m",     desc = "markdown",  group = "markdown" },
-      { "<leader>g",     desc = "git",       group = "git" },
       { "<leader><tab>", desc = "neotree" },
       { "<leader>c",     desc = "code",      group = "code" },
       { "<leader>?",     desc = "which-key" },
