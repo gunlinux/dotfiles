@@ -3,12 +3,14 @@ return {
   bashls = {},
   gopls = {},
   ruff = {
+    --[[
     trace = "messages",
     init_options = {
       settings = {
         logLevel = "debug",
       },
     },
+    ]]--
   },
   lua_ls = {
     settings = {
@@ -28,8 +30,7 @@ return {
       },
       python = {
         analysis = {
-          -- Ignore all files for analysis to exclusively use Ruff for linting
-          ignore = { "*" },
+          typeCheckingMode = "basic"
         },
       },
     },

@@ -32,11 +32,7 @@ return {
       lspconfig[name].setup(opts)
     end
 
-    --vim.keymap.set({ "n", "v" }, "<Leader>K", vim.lsp.buf.hover, { desc = "lsp go to documentation" })
-    vim.keymap.set({ "n", "v" }, "<Leader>cf", vim.lsp.buf.format, { desc = "lsp format buffer" })
-    vim.keymap.set("n", "<Leader>cd", vim.lsp.buf.definition, { desc = "lsp go to definition" })
-    vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, { desc = "lsp conf action" })
-    vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.references, { desc = "lsp go to references" })
-    vim.keymap.set("n", "<Leader>cn", vim.lsp.buf.rename, { desc = "lsp rename" })
+    vim.keymap.set({ "n", "v" }, "grf", vim.lsp.buf.format, { desc = "lsp format buffer" })
+    vim.keymap.set("n", "grd", vim.lsp.buf.definition, { desc = "lsp go to definition" })
   end,
 }
