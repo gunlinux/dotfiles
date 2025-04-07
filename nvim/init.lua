@@ -25,6 +25,7 @@ require("lazy").setup({
   rocks = {
     enabled = false,
   },
+  checker = { enabled = false, notify = false },
   install = {}, --colorscheme = { "NeoSolarized" } },
 })
 
