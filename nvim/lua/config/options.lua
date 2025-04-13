@@ -30,3 +30,5 @@ vim.g.loaded_node_provider = 0
 -- command autocomplete
 vim.g.wildmenu = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
+
+vim.diagnostic.config({ virtual_text = true })

@@ -6,6 +6,7 @@ return {
     "nvim-neotest/nvim-nio",
     "jay-babu/mason-nvim-dap.nvim",
     "theHamsta/nvim-dap-virtual-text",
+    { "igorlfs/nvim-dap-view", opts = {} },
   },
   config = function()
     local python_path = table
@@ -33,6 +34,19 @@ return {
       },
     })
     require("nvim-dap-virtual-text").setup({})
+    local dap, dv = require("dap"), require("dap-view")
+    dap.listeners.before.attach["dap-view-config"] = function()
+        dv.open()
+    end
+    dap.listeners.before.launch["dap-view-config"] = function()
+        dv.open()
+    end
+    dap.listeners.before.event_terminated["dap-view-config"] = function()
+        dv.close()
+    end
+    dap.listeners.before.event_exited["dap-view-config"] = function()
+        dv.close()
+    end
   end,
   -- dap binds
   keys = {
