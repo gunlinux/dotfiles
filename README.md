@@ -16,6 +16,16 @@ sudo apt install fd-find
 sudo apt install ripgrep
 ```
 
+###  Archlinux
+```
+pacman -S ruff
+pacman -S fd
+pacman -S ripgrep
+pip install basedpyright
+```
+
+
 # now playing
 
 dont forget put api_key in ~/dotfiles/hypr/waybar/scripts/.env
+

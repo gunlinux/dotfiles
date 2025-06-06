@@ -30,5 +30,8 @@ vim.g.loaded_node_provider = 0
 -- command autocomplete
 vim.g.wildmenu = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
+vim.diagnostic.config({ virtual_text = true})
 
-vim.diagnostic.config({ virtual_text = true })
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
