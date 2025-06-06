@@ -13,6 +13,8 @@ return {
       { "<Leader>fk", "<CMD>Telescope keymaps<CR>",     mode = { "n", "v" }, desc = "Telescope keymaps" },
       { "<Leader>fb", "<CMD>Telescope buffers<CR>",     mode = { "n", "v" }, desc = "telescope bugffers" },
       { "<Leader>xx", "<CMD>Telescope diagnostics<CR>", mode = { "n", "v" }, desc = "telescope diagnostics" },
+      { "<Leader>b", "<CMD>Telescope buffers<CR>", mode = { "n" }, desc = "bufferline pick" },
+
     },
     config = true,
   },
@@ -21,6 +23,13 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
+        defaults = {
+            layout_strategy = "vertical",
+            layout_config = { height=1, width=1 },
+        },
+        vertical = {
+          width = 0.3
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({

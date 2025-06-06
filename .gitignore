@@ -2,3 +2,4 @@
 lazy-lock.json
 .env
 venv
+.aider*

@@ -49,15 +49,5 @@ return {
         zindex = 20,
       })
     end,
-  },
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    ft = { "python", "go", "lua" },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("rainbow-delimiters.setup").setup({})
-    end,
-  },
+  }
 }

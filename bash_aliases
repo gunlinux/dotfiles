@@ -48,3 +48,5 @@ alias nvim_server="nvim --headless --listen 0.0.0.0:6666"
 alias nvim_client="nvim --remote-ui --server"
 
 alias sc="grim -o ~/styles/last.png -g '0,0 2560x1440'"
+alias uvim="uv run nvim"
+alias pvim="poetry run nvim"
