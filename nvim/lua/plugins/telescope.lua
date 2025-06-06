@@ -23,6 +23,13 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
+        defaults = {
+            layout_strategy = "vertical",
+            layout_config = { height=1, width=1 },
+        },
+        vertical = {
+          width = 0.3
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({
