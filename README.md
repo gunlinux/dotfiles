@@ -29,3 +29,6 @@ pip install basedpyright
 
 dont forget put api_key in ~/dotfiles/hypr/waybar/scripts/.env
 
+
+# put starship.toml to ~/.config/starship.toml
+
