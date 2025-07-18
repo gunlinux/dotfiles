@@ -10,11 +10,7 @@ alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.ngin
 alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.restart='nginx.stop && nginx.start'
 
-if [ -x /usr/bin/eza ]; then
-  alias ls="EZA_COLORS=\"reset:*.txt=31\" eza --icons --color --git --header"
-else
-  alias ls="ls --color=auto"
-fi
+alias ls="ls --color=auto"
 
 
 # Lock screen
@@ -50,3 +46,7 @@ alias nvim_client="nvim --remote-ui --server"
 alias sc="grim -o ~/styles/last.png -g '0,0 2560x1440'"
 alias uvim="uv run nvim"
 alias pvim="poetry run nvim"
+alias v="nvim"
+alias u="uvim"
+alias p="pvim"
+

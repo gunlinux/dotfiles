@@ -43,5 +43,5 @@ vim.lsp.config("*", {
 })
 
 -- Enable each language server by filename under the lsp/ folder
-vim.lsp.enable({ "gopls", "basedpyright", "luals", "ruff" })
+vim.lsp.enable({ "gopls", "basedpyright", "luals", "ruff", "rust_analyzer", "css_lsp"})
 --vim.lsp.enable({ "gopls", "basedpyright", "luals", })

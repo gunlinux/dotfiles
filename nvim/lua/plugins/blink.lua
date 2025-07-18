@@ -34,7 +34,15 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = true } },
+    completion = { documentation = { auto_show = false, auto_show_delay_ms = 5000 }},
+    signature = {
+      enabled = false,
+      trigger = {
+        enabled = false, -- if I uncomment this, the keymap won't work anymore
+        show_on_trigger_character = false,
+        show_on_insert_on_trigger_character = false,
+      },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -49,5 +57,5 @@ return {
     -- See the fuzzy documentation for more information
     fuzzy = { implementation = "prefer_rust_with_warning" }
   },
-  opts_extend = { "sources.default" }
+  --opts_extend = { "sources.default" }
 }
