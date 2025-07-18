@@ -35,3 +35,5 @@ vim.diagnostic.config({ virtual_text = true})
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
+
+vim.lsp.set_log_level("debug")
