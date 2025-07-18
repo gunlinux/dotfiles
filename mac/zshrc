@@ -14,3 +14,8 @@ fi
 
 alias ls='eza'
 eval $(gdircolors -b ~/.dir_colors)
+
+alias pvim="poetry run nvim"
+alias uvim="uv run nvim"
+alias p="poetry run nvim"
+alias u="uv run nvim"
