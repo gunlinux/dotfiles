@@ -5,7 +5,8 @@ ENV DOCKER=1
 
 WORKDIR /root
 
-RUN apk update && apk add --no-cache git py3-pip py3-virtualenv gcc tmux ripgrep fd bash neovim libc-dev wget unzip curl go && rm -rf /var/cache/apk/* /root/.cache
+RUN echo "@community https://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk update && apk add --no-cache git neovim@community py3-pip py3-virtualenv gcc tmux ripgrep fd bash libc-dev wget unzip curl go gzip ruff rust cargo && rm -rf /var/cache/apk/* /root/.cache
 COPY  . /root/dotfiles
 
 RUN bash /root/dotfiles/go.sh
