@@ -1,7 +1,9 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+  },
 
   -- use a release tag to download pre-built binaries
   version = '1.*',
@@ -34,7 +36,10 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false, auto_show_delay_ms = 5000 }},
+    completion = {
+      documentation = { auto_show = false, auto_show_delay_ms = 5000 },
+      trigger = { prefetch_on_insert = false }
+    },
     signature = {
       enabled = false,
       trigger = {
@@ -43,7 +48,6 @@ return {
         show_on_insert_on_trigger_character = false,
       },
     },
-
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
@@ -54,8 +58,10 @@ return {
     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
+    -- For manual completion only, remove 'minuet' from default
+
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = "prefer_rust_with_warning" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
   },
   --opts_extend = { "sources.default" }
 }
