@@ -38,7 +38,7 @@ return {
       todo = { enabled = false },
       alacritty = {
         enabled = true,
-        font = "18", -- font size
+        font = "20", -- font size
       },
     }
   },
