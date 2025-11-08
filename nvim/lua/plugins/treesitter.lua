@@ -26,6 +26,7 @@ return {
           "json",
           "yaml",
           "toml",
+          "jinja",
         },
 
         sync_install = false, -- Install parsers synchronously (for better startup experience)
@@ -88,6 +89,13 @@ return {
           },
         },
       })
+      vim.treesitter.language.register('python', 'notpy')  -- the someft filetype will use the python parser and queries.
+      vim.filetype.add({
+        extension = {
+          htmx = "htmx",  -- объявляем отдельный filetype
+        },
+      })
+      vim.treesitter.language.register("jinja", "htmx")
     end,
   },
   {
