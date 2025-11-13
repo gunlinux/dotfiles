@@ -89,13 +89,13 @@ return {
           },
         },
       })
-      vim.treesitter.language.register('python', 'notpy')  -- the someft filetype will use the python parser and queries.
       vim.filetype.add({
         extension = {
           htmx = "htmx",  -- объявляем отдельный filetype
         },
       })
-      vim.treesitter.language.register("jinja", "htmx")
+      vim.treesitter.language.register("htmldjango", "htmx")
+      vim.treesitter.language.register("htmldjango", "html")
     end,
   },
   {
@@ -104,7 +104,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    ft = { "python", "go", "lua" },
+    ft = { "python", "go", "lua", "html" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
