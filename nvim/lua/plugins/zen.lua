@@ -1,5 +1,6 @@
 return {
   "folke/zen-mode.nvim",
+  lazy=false,
   opts = {
     window = {
       backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
@@ -38,7 +39,7 @@ return {
       todo = { enabled = false },
       alacritty = {
         enabled = true,
-        font = "18", -- font size
+        font = "20", -- font size
       },
     }
   },
