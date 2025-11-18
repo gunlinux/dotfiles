@@ -1,3 +1,20 @@
+local dap_config = {
+  windows = {
+    height = 0.3,
+    position = "below",
+    terminal = {
+      hide = { "delve" },
+      start_hidden = false,
+    },
+  },
+  winbar = {
+    show = true,
+    sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl" },
+    default_section = "exceptions",
+  }
+}
+
+
 return {
   event = { "BufReadPost", "BufNewFile" },
   "mfussenegger/nvim-dap",
@@ -6,15 +23,15 @@ return {
     "nvim-neotest/nvim-nio",
     "jay-babu/mason-nvim-dap.nvim",
     "theHamsta/nvim-dap-virtual-text",
-    { "igorlfs/nvim-dap-view", opts = {} },
+    { "igorlfs/nvim-dap-view", opts = dap_config },
   },
   config = function()
     local python_path = table
         .concat({ vim.fn.stdpath("data"), "mason", "packages", "debugpy", "venv", "bin", "python" }, "/")
         :gsub("//+", "/")
     local codelldb_path = table
-      .concat({ vim.fn.stdpath("data"), "mason", "packages", "codelldb", "extension", "adapter", "codelldb" }, "/")
-      :gsub("//+", "/")
+        .concat({ vim.fn.stdpath("data"), "mason", "packages", "codelldb", "extension", "adapter", "codelldb" }, "/")
+        :gsub("//+", "/")
     require("mason-nvim-dap").setup({
       ensure_installed = { "python", "delve", "codelldb" },
       automatic_setup = true,
@@ -35,11 +52,11 @@ return {
           }
           require("mason-nvim-dap").default_setup(config) -- don't forget this!
         end,
-        },
+      },
     })
     require("nvim-dap-virtual-text").setup({})
     local dap, dv = require("dap"), require("dap-view")
-    dap.configurations.rust= {
+    dap.configurations.rust = {
       {
         name = "Launch file",
         type = "codelldb",
@@ -66,23 +83,28 @@ return {
           return cwd .. "/target/debug/" .. bin_name
         end,
         --program = function()
-         -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        -- return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
         --end,
         cwd = '${workspaceFolder}',
         stopOnEntry = false
       }
     }
+    vim.keymap.set("n", "<leader>da", function()
+      require("dap").set_exception_breakpoints({ "Warning", "Error", "Exception" })
+    end, { desc = "Stop on exceptions" }) -- TODO this one doesn't show on which-key
+    dap.defaults.fallback.exception_breakpoints = { 'raised' }
+    dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
     dap.listeners.before.attach["dap-view-config"] = function()
-        dv.open()
+      dv.open()
     end
     dap.listeners.before.launch["dap-view-config"] = function()
-        dv.open()
+      dv.open()
     end
     dap.listeners.before.event_terminated["dap-view-config"] = function()
-        dv.close()
+      dv.close()
     end
     dap.listeners.before.event_exited["dap-view-config"] = function()
-        dv.close()
+      dv.close()
     end
   end,
   -- dap binds
@@ -107,13 +129,13 @@ return {
     },
     {
       "<F8>",
-      "<CMD>DapStepInto<CR>",
+      "<CMD>DapStepOver<CR>",
       mode = { "n", "v" },
       desc = "Dap Continue",
     },
     {
       "<F9>",
-      "<CMD>DapStepOver<CR>",
+      "<CMD>DapStepOut<CR>",
       mode = { "n", "v" },
       desc = "Dap Continue",
     },
