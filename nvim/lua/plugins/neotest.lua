@@ -11,6 +11,7 @@ return {
     },
     config = function()
       require("neotest").setup({
+        default_strategy = "dap",
         adapters = {
           require("neotest-python")({
             dap = {
@@ -27,7 +28,12 @@ return {
       {
         "<leader>lt",
         "<CMD>Neotest summary<cr>",
-        desc = "open neotest summery window",
+        desc = "open neotest summary window",
+      },
+      {
+        "<leader>lo",
+        "<CMD>Neotest output-panel<cr>",
+        desc = "open neotest summary window",
       },
     },
   },
