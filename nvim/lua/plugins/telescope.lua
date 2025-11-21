@@ -13,7 +13,6 @@ return {
       { "<Leader>fk", "<CMD>Telescope keymaps<CR>",     mode = { "n", "v" }, desc = "Telescope keymaps" },
       { "<Leader>fb", "<CMD>Telescope buffers<CR>",     mode = { "n", "v" }, desc = "telescope bugffers" },
       { "<Leader>xx", "<CMD>Telescope diagnostics<CR>", mode = { "n", "v" }, desc = "telescope diagnostics" },
-      { "<Leader>b", "<CMD>Telescope buffers<CR>", mode = { "n" }, desc = "bufferline pick" },
 
     },
     config = true,
