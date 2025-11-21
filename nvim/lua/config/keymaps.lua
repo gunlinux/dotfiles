@@ -14,3 +14,6 @@ vim.keymap.set({ "v" }, "<Leader>Y", '"+y$') -- E.g: <leader>yy will yank curren
 vim.keymap.set({ "n" }, "<Leader>p", '"+p')  -- Paste after cursor from clipboard
 vim.keymap.set({ "n" }, "<Leader>P", '"+P')  -- Paste before cursor from clipboard
 vim.keymap.set({ "n" }, "<Leader>bdd", '<cmd>%bd|edit#|bd#<CR>')  -- Paste before cursor from clipboard
+
+vim.keymap.set({ "n" }, "<Leader><Left>", '<cmd>:bp<CR>')
+vim.keymap.set({ "n" }, "<Leader><Right>", '<cmd>:bn<CR>')
