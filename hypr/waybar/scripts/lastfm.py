@@ -41,7 +41,7 @@ def get_data(api_key: str, url: str = "http://ws.audioscrobbler.com/2.0/"):
         "format": "json",
     }
     req = requests.post(url, params=params)
-    return req.json()
+    return req.json() 
 
 
 def main():

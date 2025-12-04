@@ -9,11 +9,11 @@ import = [
 # Window Customization
 [window]
 padding = { x = 10, y = 10 }
-opacity = 0.8
+opacity = 0.95
 blur = true
 
 [font]
-size = 20.0
+size = 18.0
 #
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"

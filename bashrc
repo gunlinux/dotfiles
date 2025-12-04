@@ -89,3 +89,4 @@ if [ -x "$(command -v dircolors)" ]; then
   eval `dircolors ~/dotfiles/colors/dircolors`
 fi
 export LC_ALL=en_US.UTF-8
+. "$HOME/.cargo/env"
