@@ -36,4 +36,9 @@ vim.diagnostic.config({ virtual_text = true})
 vim.opt.laststatus = 3
 
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
+
+-- disable mouse
+vim.opt.mousescroll = "ver:0,hor:0"
+vim.opt.mouse = ""
+

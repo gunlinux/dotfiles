@@ -36,3 +36,18 @@ bindings = [
 { key = "Insert", mods = "Shift", action = "Paste" },
 { key = "Insert", mods = "Control", action = "Copy" }
 ]
+
+[mouse]
+hide_when_typing = true
+
+ bindings = [
+      { mouse = "Back", mode="AppCursor|AppKeypad | Search | Alt | Vi", action = "None" },
+      { mouse = "Left", mode="AppCursor|AppKeypad | Search | Alt | Vi", action = "None" },
+      { mouse = "Forward", action = "None" },
+      { mouse = "Right", action = "None" },
+      { mouse = "Middle", action = "None" },
+      { mouse = "Left", mods = "Control", action = "None" },
+      { mouse = "Right", mods = "Control", action = "None" },
+      { mouse = "Middle", mods = "Control", action = "None" },
+ ]
+
