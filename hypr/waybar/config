@@ -1,5 +1,36 @@
-
+[
 {
+    "output": "DP-3",
+    "layer": "top",
+    "position": "top",
+    "spacing": 0,
+    "height": 40,
+    "margin-top": 0,
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+    ],
+    "modules-right": [
+        "tray",
+    ],
+    "tray": {
+        "spacing": 5, 
+    },
+  
+    "custom/logo": {
+        "format": "i use   btw ",
+        "tooltip": false,
+    },
+    "hyprland/workspaces": {
+      "format": "{name}",
+      "format-icons": {
+        "active": "",
+        "default": ""
+      },
+    }
+},
+{
+    "output": "DP-1",
     "layer": "top",
     "position": "top",
     "spacing": 0,
@@ -12,17 +43,17 @@
     ],
     "modules-center": [
        "custom/online",
-       "clock",
     ],
     "modules-right": [
         "tray",
-        "cpu",
-        "memory",
-        "temperature",
-        "network",
-        "battery",
-        "pulseaudio",
-        "custom/notification",
+        "clock",
+        // "cpu",
+        // "memory",
+        // "temperature",
+        // "network",
+        "battery"
+        // "pulseaudio",
+        // "custom/notification",
     ],
 
     "memory": {
@@ -112,8 +143,7 @@
     },
     "custom/online": {
       "format": " 🔴 {} ",
-      "interval": 5, // Remove this if your script is endless and write in loop
-      "exec": "$HOME/projects/viewer/venv/bin/python3  $HOME/projects/viewer/view.py 2> /dev/null" // Script in resources folder
+      "exec": "/home/loki/projects/viewer/viewers/run.sh"
     },
     "custom/nowplaying": {
         "format": "▶︎ {}",
@@ -133,3 +163,4 @@
       },
     }
 }
+]

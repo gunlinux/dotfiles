@@ -10,7 +10,8 @@ window {
   border: #90cdfa;
   border: 3px solid #268db2;
   border-radius: 25px;
-  opacity: 0.8;
+  opacity: 0.9;
+  background: #1a1a25;
 }
 
 #input {
@@ -20,7 +21,7 @@ window {
   border: none;
   font-weight: bold;
   font-size: 30px;
-  background: #001a1d;
+  background: #101025;
   color: #c4d3da;
   border-radius: 15px;
 }
