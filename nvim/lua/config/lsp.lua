@@ -1,9 +1,11 @@
 -- This is where you enable features that only work
+--
 -- if there is a language server active in the file
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP actions",
   callback = function(event)
     local opts = { buffer = event.buf }
+
 
     vim.keymap.set("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
     vim.keymap.set("n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
@@ -63,4 +65,11 @@ vim.lsp.config("*", {
 })
 
 -- Enable each language server by filename under the lsp/ folder
-vim.lsp.enable({ "gopls", "basedpyright", "luals", "ruff", "rust_analyzer", "css_lsp", "htmx"})
+vim.lsp.enable({ "gopls", "pyright", "luals", "ruff", "rust_analyzer", "css_lsp", "htmx"})
+
+-- disable default lsp binding cause why not
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'grt')
+vim.keymap.del('n', 'grr')

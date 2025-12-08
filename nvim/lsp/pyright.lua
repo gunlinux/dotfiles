@@ -12,7 +12,7 @@ return {
     '.git',
   },
   settings = {
-    basedpyright = {
+    pyright = {
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
