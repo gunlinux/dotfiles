@@ -54,7 +54,9 @@ return {
         end,
       },
     })
-    require("nvim-dap-virtual-text").setup({})
+    require("nvim-dap-virtual-text").setup({
+      virt_text_pos = 'eol'
+    })
     local dap, dv = require("dap"), require("dap-view")
     dap.configurations.rust = {
       {
