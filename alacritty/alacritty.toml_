@@ -1,0 +1,38 @@
+[general]
+import = [
+    "~/.config/alacritty/solarized_osaka.toml"
+]
+
+[env]
+  TERM = "xterm-256color"
+
+# Window Customization
+[window]
+padding = { x = 10, y = 10 }
+opacity = 0.95
+blur = true
+
+[font]
+size = 18.0
+#
+[font.bold]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+#
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"
+#
+[font.italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Italic"
+#
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Regular"
+
+[keyboard]
+bindings = [
+{ key = "Insert", mods = "Shift", action = "Paste" },
+{ key = "Insert", mods = "Control", action = "Copy" }
+]

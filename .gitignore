@@ -3,3 +3,5 @@ lazy-lock.json
 .env
 venv
 .aider*
+__pycache__
+.nvimlog

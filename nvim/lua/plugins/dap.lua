@@ -1,10 +1,8 @@
 local dap_config = {
   windows = {
-    height = 0.3,
     position = "below",
     terminal = {
       hide = { "delve" },
-      start_hidden = false,
     },
   },
   winbar = {
