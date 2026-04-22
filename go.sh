@@ -15,6 +15,9 @@ ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/editorconfig ~/.editorconfig
 ln -s ~/dotfiles/wezterm.lua ~/.wezterm.lua
 ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/dotfiles/starship.toml ~/.config/starship.toml
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+
 
 # tmux tpm manage
 mkdir -p ~/.tmux/plugins

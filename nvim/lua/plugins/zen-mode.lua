@@ -5,12 +5,12 @@ return {
   },
   opts = {
      window = {
-      backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+      backdrop = 1, -- 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
       -- height and width can be:
       -- * an absolute number of cells when > 1
       -- * a percentage of the width / height of the editor when <= 1
       -- * a function that returns the width or the height
-      width = 120, -- width of the Zen window
+      width = 1, -- width of the Zen window
       height = 1, -- height of the Zen window
       -- by default, no options are changed for the Zen window
       -- uncomment any of the options below, or add other vim.wo options you want to apply
@@ -36,7 +36,7 @@ return {
         laststatus = 0, -- turn off the statusline in zen mode
       },
       twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-      gitsigns = { enabled = false }, -- disables git signs
+      gitsigns = { enabled = true }, -- disables git signs
       tmux = { enabled = true}, -- disables the tmux statusline
       todo = { enabled = false }, -- if set to "true", todo-comments.nvim highlights will be disabled
       -- this will change the font size on kitty when in zen mode
@@ -52,7 +52,7 @@ return {
       -- uses `alacritty msg` subcommand to change font size
       alacritty = {
         enabled = true,
-        font = "18", -- font size
+        font = "24", -- font size
       },
       -- this will change the font size on wezterm when in zen mode
       -- See alse also the Plugins/Wezterm section in this projects README
