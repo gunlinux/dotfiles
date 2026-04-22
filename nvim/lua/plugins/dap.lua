@@ -93,9 +93,9 @@ return {
       require("dap").set_exception_breakpoints({ "Warning", "Error", "Exception" })
     end, { desc = "Stop on exceptions" }) -- TODO this one doesn't show on which-key
     dap.defaults.fallback.exception_breakpoints = { 'raised' }
-    dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
     dap.listeners.before.attach["dap-view-config"] = function()
       dv.open()
+      dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
     end
     dap.listeners.before.launch["dap-view-config"] = function()
       dv.open()
