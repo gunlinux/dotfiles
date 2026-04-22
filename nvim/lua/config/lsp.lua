@@ -73,3 +73,26 @@ vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grn')
 vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'grr')
+
+
+
+-- Функция для перезапуска LSP
+function RestartLSP()
+    local clients = vim.lsp.get_clients()
+    if #clients == 0 then
+        print("No active LSP clients")
+        return
+    end
+    
+    -- Останавливаем всех активных клиентов
+    for _, client in ipairs(clients) do
+        vim.lsp.stop_client(client.id)
+    end
+    
+    -- Перезагружаем текущий буфер, чтобы LSP запустился снова
+    vim.cmd('edit')
+    print("LSP restarted")
+end
+
+-- Создаем команду :LspRestart
+vim.api.nvim_create_user_command('LspRestart', RestartLSP, {})
