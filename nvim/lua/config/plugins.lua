@@ -54,7 +54,7 @@ require("lualine").setup({
 
 -- ── Buffer line ─────────────────────────────────────────────────────────
 vim.pack.add({ "https://github.com/akinsho/bufferline.nvim" })
-require("bufferline").setup{}
+require("bufferline").setup {}
 
 -- ── File tree ───────────────────────────────────────────────────────────
 -- neo-tree v3.x branch; if vim.pack installs wrong version run :checkhealth neo-tree
@@ -129,7 +129,7 @@ require("snacks").setup({
     },
     sections = {
       { section = "header" },
-      { section = "keys", gap = 1, padding = 1 },
+      { section = "keys",         gap = 1,    padding = 1 },
       { section = "recent_files", padding = 1 },
     },
   },
@@ -149,8 +149,8 @@ vim.keymap.set('n', "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
 -- ── Multiple cursors ────────────────────────────────────────────────────
 vim.pack.add({ "https://github.com/brenton-leighton/multiple-cursors.nvim" })
 require("multiple-cursors").setup({})
-vim.keymap.set({ "n", "i", "x" }, "<C-Down>", "<Cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor down" })
-vim.keymap.set({ "n", "i", "x" }, "<C-Up>", "<Cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor up" })
+vim.keymap.set({ "n", "i", "x" }, "<A-Down>", "<Cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor down" })
+vim.keymap.set({ "n", "i", "x" }, "<A-Up>", "<Cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor up" })
 vim.keymap.set({ "n", "i" }, "<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", { desc = "Add/remove cursor" })
 
 -- ── Zen mode ────────────────────────────────────────────────────────────
@@ -267,7 +267,9 @@ dap.configurations.rust = {
       if vim.fn.filereadable(cargo_toml) == 1 then
         for line in io.lines(cargo_toml) do
           local name = line:match('^name%s*=%s*["\'](.+)["\']')
-          if name then bin_name = name; break end
+          if name then
+            bin_name = name; break
+          end
         end
       end
       return cwd .. "/target/debug/" .. (bin_name or vim.fn.fnamemodify(cwd, ":t"))

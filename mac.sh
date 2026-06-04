@@ -1,6 +1,6 @@
 brew install coreutils starship neovim
 
-brew install ripgrep fzf git jq
+brew install ripgrep fzf git jq lua-language-server
 
 
 
