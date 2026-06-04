@@ -296,3 +296,10 @@ vim.keymap.set({ "n", "v" }, "<F9>", "<CMD>DapStepOut<CR>", { desc = "Dap Step O
 vim.keymap.set("n", "<leader>da", function()
   dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
 end, { desc = "Stop on exceptions" })
+
+-- ── venv-selector ─────────────────────────────────────────────────────────────
+vim.pack.add({
+  "https://github.com/linux-cultist/venv-selector.nvim"
+})
+require("venv-selector").setup()
+vim.keymap.set({ "n", "v" }, "<Leader>vs", "<cmd>VenvSelect<cr>", { desc = "venvselect" })
