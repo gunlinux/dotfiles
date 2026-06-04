@@ -332,7 +332,6 @@ dap.configurations.python = {
   },
 }
 
-dap.defaults.fallback.exception_breakpoints = { 'raised' }
 
 -- Finds a normal editor window (non-sidebar, editable buffer) and focuses it.
 -- Needed before dap-view opens (so it splits below the main editor, not a panel)
@@ -360,11 +359,25 @@ dap.listeners.before.event_stopped["fix_winfixbuf"] = focus_normal_win
 dap.listeners.before.attach["dap-view-config"] = function()
   focus_normal_win()
   dv.open()
-  dap.set_exception_breakpoints({ "raised", "uncaught" })
 end
 dap.listeners.before.launch["dap-view-config"] = function()
   focus_normal_win()
   dv.open()
+end
+-- dap-view owns exception breakpoints via state.exceptions_options.
+-- Its after.initialize listener populates that state; ours runs after (registered later)
+-- and forces the three filters on. dap-view's after.configurationDone then applies it.
+dap.listeners.after.initialize["exception-breakpoints-auto"] = function(session)
+  local dv_state = require("dap-view.state")
+  local target = { raised = true, uncaught = true, userUnhandled = true }
+  local opts = dv_state.exceptions_options[session.config.type]
+  if opts then
+    for _, opt in ipairs(opts) do
+      if target[opt.exception_filter.filter] then
+        opt.enabled = true
+      end
+    end
+  end
 end
 dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
 dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
