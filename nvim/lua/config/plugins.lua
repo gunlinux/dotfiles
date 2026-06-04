@@ -194,6 +194,7 @@ vim.pack.add({
   "https://github.com/antoinemadec/FixCursorHold.nvim",
   "https://github.com/nvim-neotest/neotest",
   "https://github.com/nvim-neotest/neotest-python",
+  "https://github.com/linux-cultist/venv-selector.nvim"
 })
 require("neotest").setup({
   default_strategy = "dap",
@@ -202,11 +203,22 @@ require("neotest").setup({
       dap = { justMyCode = false },
       args = { "--log-level", "DEBUG" },
       runner = "pytest",
+      python = function()
+        return require("venv-selector").python() or 'python'
+      end,
     }),
   },
 })
 vim.keymap.set("n", "<leader>lt", "<CMD>Neotest summary<cr>", { desc = "neotest summary" })
 vim.keymap.set("n", "<leader>lo", "<CMD>Neotest output-panel<cr>", { desc = "neotest output" })
+
+-- ── venv-selector ─────────────────────────────────────────────────────────────
+vim.pack.add({
+  "https://github.com/linux-cultist/venv-selector.nvim"
+})
+require("venv-selector").setup()
+vim.keymap.set({ "n", "v" }, "<Leader>vs", "<cmd>VenvSelect<cr>", { desc = "venvselect" })
+
 
 -- ── DAP ─────────────────────────────────────────────────────────────────
 vim.pack.add({
@@ -214,6 +226,7 @@ vim.pack.add({
   "https://github.com/jay-babu/mason-nvim-dap.nvim",
   "https://github.com/theHamsta/nvim-dap-virtual-text",
   "https://github.com/igorlfs/nvim-dap-view",
+  "https://github.com/linux-cultist/venv-selector.nvim",
 })
 
 require("nvim-dap-virtual-text").setup({ virt_text_pos = 'eol' })
@@ -278,6 +291,40 @@ dap.configurations.rust = {
     stopOnEntry = false,
   }
 }
+dap.configurations.python = {
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Launch current file',
+    program = '${file}',
+    pythonPath = function()
+      return require("venv-selector").python() or 'python'
+    end,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Launch with arguments',
+    program = '${file}',
+    args = function()
+      local args_string = vim.fn.input('Arguments: ')
+      return vim.split(args_string, " ", true)
+    end,
+    pythonPath = function()
+      return require("venv-selector").python() or 'python'
+    end,
+  },
+  {
+    type = 'python',
+    request = 'launch',
+    name = 'Run pytest',
+    module = 'pytest',
+    args = {'${file}'},
+    pythonPath = function()
+      return require("venv-selector").python() or 'python'
+    end,
+  },
+}
 
 dap.defaults.fallback.exception_breakpoints = { 'raised' }
 dap.listeners.before.attach["dap-view-config"] = function()
@@ -294,12 +341,7 @@ vim.keymap.set({ "n", "v" }, "<F7>", "<CMD>DapStepInto<CR>", { desc = "Dap Step 
 vim.keymap.set({ "n", "v" }, "<F8>", "<CMD>DapStepOver<CR>", { desc = "Dap Step Over" })
 vim.keymap.set({ "n", "v" }, "<F9>", "<CMD>DapStepOut<CR>", { desc = "Dap Step Out" })
 vim.keymap.set("n", "<leader>da", function()
-  dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
+  dap.set_exception_breakpoints({"raised", "uncaught"})
 end, { desc = "Stop on exceptions" })
 
--- ── venv-selector ─────────────────────────────────────────────────────────────
-vim.pack.add({
-  "https://github.com/linux-cultist/venv-selector.nvim"
-})
-require("venv-selector").setup()
-vim.keymap.set({ "n", "v" }, "<Leader>vs", "<cmd>VenvSelect<cr>", { desc = "venvselect" })
+
