@@ -200,11 +200,11 @@ require("neotest").setup({
   default_strategy = "dap",
   adapters = {
     require("neotest-python")({
-      dap = { justMyCode = false },
+      dap = { justMyCode = true },
       args = { "--log-level", "DEBUG" },
       runner = "pytest",
       python = function()
-        return require("venv-selector").python() or 'python'
+        return require("venv-selector").python() or vim.fn.exepath('python3') or 'python3'
       end,
     }),
   },
@@ -216,7 +216,13 @@ vim.keymap.set("n", "<leader>lo", "<CMD>Neotest output-panel<cr>", { desc = "neo
 vim.pack.add({
   "https://github.com/linux-cultist/venv-selector.nvim"
 })
-require("venv-selector").setup()
+require("venv-selector").setup({
+  options = {
+    enable_cached_venvs = true,
+    cached_venv_automatic_activation = true,
+    require_lsp_activation = false,
+  },
+})
 vim.keymap.set({ "n", "v" }, "<Leader>vs", "<cmd>VenvSelect<cr>", { desc = "venvselect" })
 
 
@@ -298,7 +304,7 @@ dap.configurations.python = {
     name = 'Launch current file',
     program = '${file}',
     pythonPath = function()
-      return require("venv-selector").python() or 'python'
+      return require("venv-selector").python() or vim.fn.exepath('python3') or 'python3'
     end,
   },
   {
@@ -311,7 +317,7 @@ dap.configurations.python = {
       return vim.split(args_string, " ", true)
     end,
     pythonPath = function()
-      return require("venv-selector").python() or 'python'
+      return require("venv-selector").python() or vim.fn.exepath('python3') or 'python3'
     end,
   },
   {
@@ -321,17 +327,45 @@ dap.configurations.python = {
     module = 'pytest',
     args = {'${file}'},
     pythonPath = function()
-      return require("venv-selector").python() or 'python'
+      return require("venv-selector").python() or vim.fn.exepath('python3') or 'python3'
     end,
   },
 }
 
 dap.defaults.fallback.exception_breakpoints = { 'raised' }
-dap.listeners.before.attach["dap-view-config"] = function()
-  dv.open()
-  dap.set_exception_breakpoints({ "Warning", "Error", "Exception" })
+
+-- Finds a normal editor window (non-sidebar, editable buffer) and focuses it.
+-- Needed before dap-view opens (so it splits below the main editor, not a panel)
+-- and before DAP jumps to source (so the file doesn't open inside a panel).
+-- neotest panels use buftype='' so we must also exclude them by filetype.
+local function is_normal_win(win)
+  local buf = vim.api.nvim_win_get_buf(win)
+  return not vim.wo[win].winfixbuf
+    and vim.bo[buf].buftype == ''
+    and not vim.bo[buf].filetype:match('^neotest')
 end
-dap.listeners.before.launch["dap-view-config"] = function() dv.open() end
+
+local function focus_normal_win()
+  if is_normal_win(vim.api.nvim_get_current_win()) then return end
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    if is_normal_win(win) then
+      vim.api.nvim_set_current_win(win)
+      return
+    end
+  end
+  vim.wo[vim.api.nvim_get_current_win()].winfixbuf = false
+end
+
+dap.listeners.before.event_stopped["fix_winfixbuf"] = focus_normal_win
+dap.listeners.before.attach["dap-view-config"] = function()
+  focus_normal_win()
+  dv.open()
+  dap.set_exception_breakpoints({ "raised", "uncaught" })
+end
+dap.listeners.before.launch["dap-view-config"] = function()
+  focus_normal_win()
+  dv.open()
+end
 dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
 dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
 
