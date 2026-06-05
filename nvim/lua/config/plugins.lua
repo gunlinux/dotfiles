@@ -96,6 +96,18 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-context",
 })
+-- main-branch nvim-treesitter has no ensure_installed; install() is idempotent
+-- and runs async, so it only fetches parsers that are actually missing.
+require("nvim-treesitter").install({
+  "css",
+  "javascript",
+  "latex",
+  "scss",
+  "svelte",
+  "tsx",
+  "typst",
+  "vue",
+})
 require("treesitter-context").setup({
   enable = true,
   max_lines = 0,
@@ -110,7 +122,9 @@ require("treesitter-context").setup({
 
 -- ── Markdown ────────────────────────────────────────────────────────────
 vim.pack.add({ "https://github.com/MeanderingProgrammer/render-markdown.nvim" })
-require("render-markdown").setup({})
+-- latex disabled: rendering math needs utftex/latex2text, which this setup
+-- doesn't install, so the feature only ever produced :checkhealth warnings.
+require("render-markdown").setup({ latex = { enabled = false } })
 vim.keymap.set("n", "<Leader>md", "<CMD>RenderMarkdown toggle<CR>", { desc = "markdown toggle preview" })
 
 -- ── Dashboard ───────────────────────────────────────────────────────────
@@ -194,7 +208,6 @@ vim.pack.add({
   "https://github.com/antoinemadec/FixCursorHold.nvim",
   "https://github.com/nvim-neotest/neotest",
   "https://github.com/nvim-neotest/neotest-python",
-  "https://github.com/linux-cultist/venv-selector.nvim"
 })
 require("neotest").setup({
   default_strategy = "dap",
@@ -232,7 +245,6 @@ vim.pack.add({
   "https://github.com/jay-babu/mason-nvim-dap.nvim",
   "https://github.com/theHamsta/nvim-dap-virtual-text",
   "https://github.com/igorlfs/nvim-dap-view",
-  "https://github.com/linux-cultist/venv-selector.nvim",
 })
 
 require("nvim-dap-virtual-text").setup({ virt_text_pos = 'eol' })
@@ -254,7 +266,12 @@ local python_path = table
     :gsub("//+", "/")
 
 require("mason-nvim-dap").setup({
-  ensure_installed = { "python", "delve", "codelldb" },
+  -- ensure_installed is intentionally empty: it auto-installs async on UIEnter
+  -- and races with the explicit blocking ":MasonInstall debugpy delve codelldb"
+  -- in go.sh / Dockerfile. The loser throws "Package is already installing",
+  -- which derails the whole install and leaves the mason dir half-populated.
+  -- The bootstrap installs these deterministically instead.
+  ensure_installed = {},
   automatic_setup = true,
   handlers = {
     function(config)
