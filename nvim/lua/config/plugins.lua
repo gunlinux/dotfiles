@@ -130,6 +130,11 @@ vim.keymap.set("n", "<Leader>md", "<CMD>RenderMarkdown toggle<CR>", { desc = "ma
 -- ── Dashboard ───────────────────────────────────────────────────────────
 vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 require("snacks").setup({
+  -- single-window UIs for vim.ui.select / vim.ui.input so dap's config picker
+  -- and input prompts don't fall back to the builtin (which noice splits into
+  -- two stacked popups: the message list in front, the cmdline input behind).
+  input = { enabled = true },
+  picker = { enabled = true, ui_select = true },
   dashboard = {
     preset = {
       header = [[
@@ -409,3 +414,27 @@ vim.keymap.set("n", "<leader>da", function()
 end, { desc = "Stop on exceptions" })
 
 
+-- noice
+vim.pack.add({
+  "https://github.com/folke/noice.nvim",
+  "https://github.com/MunifTanjim/nui.nvim",
+})
+
+require("noice").setup({
+  lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = false, -- requires hrsh7th/nvim-cmp
+    },
+  },
+  -- you can enable a preset for easier configuration
+  presets = {
+    bottom_search = true, -- use a classic bottom cmdline for search
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = false, -- long messages will be sent to a split
+    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false, -- add a border to hover docs and signature help
+  },
+})
