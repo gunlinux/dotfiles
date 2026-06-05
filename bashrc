@@ -88,4 +88,3 @@ fi
 if [ -x "$(command -v dircolors)" ]; then
   eval `dircolors ~/dotfiles/colors/dircolors`
 fi
-eval "$(starship init bash)"

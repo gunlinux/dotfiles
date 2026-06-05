@@ -1,0 +1,111 @@
+# Test image for the Neovim config in isolation.
+#   docker build -f Dockerfile.nvim -t dotfiles-nvim .
+#   docker run --rm -it dotfiles-nvim          # drops into nvim
+#   docker run --rm -it dotfiles-nvim bash     # poke around
+#
+# Uses a glibc base on purpose: vim.pack needs Neovim 0.12+, and the official
+# release tarballs are glibc-linked (won't run on the alpine/musl image).
+# trixie (not bookworm) for glibc 2.41: nvim-treesitter's `main` branch compiles
+# parsers with the tree-sitter CLI, whose prebuilt binary needs glibc >= 2.39 —
+# bookworm ships 2.36 ("GLIBC_2.39 not found"), trixie ships 2.41.
+FROM debian:trixie-slim
+
+ENV LANG=C.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
+# Skip the apt/pacman blocks in go.sh; deps are installed here.
+ENV DOCKER=1
+
+ARG NVIM_VERSION=v0.12.2
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      git curl ca-certificates tar gzip unzip bash \
+      build-essential \
+      ripgrep fd-find \
+      python3 python3-venv python3-pip \
+      nodejs npm \
+    && rm -rf /var/lib/apt/lists/*
+
+# Rust via rustup, not apt: blink.cmp's fuzzy lib pulls in constant_time_eq,
+# which needs the edition2024 Cargo feature (stable since Cargo 1.85). rustup
+# gives a current stable toolchain regardless of what the distro packages.
+RUN curl --proto '=https' --tlsv1.2 -fsSL https://sh.rustup.rs | sh -s -- -y --profile minimal
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# Go from upstream, not apt: Mason installs gopls via `go install`, and modern
+# gopls's go.mod declares a Go version newer than the distro's apt golang can
+# parse ("invalid go version" build failure). The upstream tarball gives a
+# current toolchain. /root/go/bin is on PATH for `go install` targets.
+ARG GO_VERSION=1.24.4
+RUN case "$(dpkg --print-architecture)" in \
+      amd64) GO_ARCH=amd64 ;; \
+      arm64) GO_ARCH=arm64 ;; \
+      *) echo "unsupported arch for Go" >&2; exit 1 ;; \
+    esac \
+    && curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-${GO_ARCH}.tar.gz" -o /tmp/go.tar.gz \
+    && tar -C /usr/local -xzf /tmp/go.tar.gz \
+    && rm /tmp/go.tar.gz
+ENV PATH="/usr/local/go/bin:/root/go/bin:${PATH}"
+
+# Neovim (vim.pack requires 0.12+; apt's version is too old).
+# TARGETARCH is set automatically by buildkit (amd64 / arm64); map it to the
+# release asset name so the image works on both Intel and Apple Silicon hosts.
+ARG TARGETARCH
+RUN case "$TARGETARCH" in \
+      amd64) NVIM_ARCH=x86_64 ;; \
+      arm64) NVIM_ARCH=arm64 ;; \
+      *) echo "unsupported TARGETARCH: $TARGETARCH" >&2; exit 1 ;; \
+    esac \
+    && curl -fsSL "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux-${NVIM_ARCH}.tar.gz" \
+      -o /tmp/nvim.tar.gz \
+    && tar -C /opt -xzf /tmp/nvim.tar.gz \
+    && ln -s "/opt/nvim-linux-${NVIM_ARCH}/bin/nvim" /usr/local/bin/nvim \
+    && rm /tmp/nvim.tar.gz
+
+# fd ships as fdfind on Debian; nvim/ripgrep expect `fd` on PATH.
+RUN ln -sf "$(command -v fdfind)" /usr/local/bin/fd
+
+# tree-sitter CLI: nvim-treesitter's `main` branch shells out to `tree-sitter
+# build` to compile each parser (with the build-essential C compiler), so
+# without it :TSInstall/:TSUpdate fail and no parsers get installed.
+RUN npm install -g tree-sitter-cli
+
+# lazygit: the config wires up lazygit.nvim + Snacks.lazygit (<Leader>lg), which
+# error out as "not installed" without the binary. Single Go binary from GitHub.
+ARG LAZYGIT_VERSION=0.44.1
+RUN case "$(dpkg --print-architecture)" in \
+      amd64) LG_ARCH=x86_64 ;; \
+      arm64) LG_ARCH=arm64 ;; \
+      *) echo "unsupported arch for lazygit" >&2; exit 1 ;; \
+    esac \
+    && curl -fsSL "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LG_ARCH}.tar.gz" \
+      -o /tmp/lazygit.tar.gz \
+    && tar -C /usr/local/bin -xzf /tmp/lazygit.tar.gz lazygit \
+    && rm /tmp/lazygit.tar.gz
+
+WORKDIR /root
+COPY nvim /root/.config/nvim
+
+# Plugin auto-install: vim.pack.add() clones missing plugins synchronously on
+# first launch and blink.cmp builds its fuzzy lib via pwait(), so a single
+# headless run installs everything. A non-zero exit here fails the build, so a
+# broken config is caught at image-build time.
+RUN nvim --headless "+qa"
+# Treesitter parsers: nvim-treesitter `main` installs them asynchronously, so a
+# bare "+TSUpdate" "+qa" quits before anything compiles and the image ships with
+# zero parsers. install():wait() blocks until every parser is built.
+RUN nvim --headless "+lua require('nvim-treesitter').install({ \
+      'lua', 'vim', 'vimdoc', 'bash', 'json', 'toml', 'yaml', 'html', 'css', \
+      'go', 'gomod', 'gosum', 'python', 'rust', 'markdown', 'markdown_inline', \
+    }):wait(600000)" "+qa"
+# The lsp/*.lua configs launch bare server binaries (gopls, pyright-langserver,
+# ruff, lua-language-server, rust-analyzer, vscode-css-language-server,
+# htmx-lsp); none ship with Neovim, so install them via Mason. Mason prepends
+# its bin/ to nvim's PATH, so the bare `cmd = { ... }` configs resolve.
+# Bundled with the DAP tools (debugpy/delve/codelldb): mason-nvim-dap's
+# ensure_installed runs async after UIEnter and the "+qa" above quits before it
+# finishes, whereas :MasonInstall blocks until done in headless mode.
+RUN nvim --headless "+MasonInstall \
+      gopls pyright ruff lua-language-server rust-analyzer css-lsp htmx-lsp \
+      debugpy delve codelldb" "+qall"
+
+CMD ["nvim"]
