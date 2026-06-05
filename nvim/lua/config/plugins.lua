@@ -422,6 +422,9 @@ vim.pack.add({
 
 require("noice").setup({
   lsp = {
+    -- pyright spams $/progress on every open/edit; noice renders it as a
+    -- flashing "pyright" spinner. Turn it off.
+    progress = { enabled = false },
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
