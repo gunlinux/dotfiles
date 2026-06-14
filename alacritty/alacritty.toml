@@ -9,13 +9,13 @@ import = [
 # Window Customization
 [window]
 padding = { x = 10, y = 10 }
-opacity = 0.90
-blur = true
+opacity = 0.95
+blur = false
 decorations = "None"
 decorations_theme_variant = "dark"
 
 [font]
-size = 20.0
+size = 24.0
 #
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"
