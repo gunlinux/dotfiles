@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { '/usr/bin/vscode-css-language-server', '--stdio' },
+  cmd = { 'vscode-css-language-server', '--stdio' },
   filetypes = { 'css', 'scss', 'less' },
     init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
     --root_dir = util.root_pattern('package.json', '.git'),

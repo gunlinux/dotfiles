@@ -1,11 +1,8 @@
-vim.wo.number = true -- Enable absolute line numbers
-
 vim.opt.showcmd = true
-vim.opt.nu = true
+vim.opt.nu = true -- Enable absolute line numbers
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.laststatus = 2
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
@@ -29,8 +26,6 @@ vim.opt.list = true
 vim.g.termguicolors = true
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
--- command autocomplete
-vim.g.wildmenu = true
 vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
 vim.diagnostic.config({ virtual_text = true })
 

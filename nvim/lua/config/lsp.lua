@@ -16,33 +16,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
     vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-
-    -- vim virtual text diagnostics toggle
-    vim.keymap.set("n", "<leader>tdd", function()
-      vim.diagnostic.config {
-        virtual_lines = not vim.diagnostic.config().virtual_lines,
-        virtual_text = not vim.diagnostic.config().virtual_text,
-      }
-    end, { desc = "toggle diagnostic" })
-
-    --  lsp on/off
-    vim.keymap.set("n", "<leader>tdp", function()
-      vim.lsp.enable("basedpyright", false)
-    end, { desc = "toggle basedright off" })
-
-    vim.keymap.set("n", "<leader>tdP", function()
-      vim.lsp.enable("basedpyright", true)
-    end, { desc = "toggle basedright on" })
-
-    vim.keymap.set("n", "<leader>tdr", function()
-      vim.lsp.enable("ruff", false)
-    end, { desc = "toggle ruff off" })
-
-    vim.keymap.set("n", "<leader>tdR", function()
-      vim.lsp.enable("ruff", true)
-    end, { desc = "toggle ruff on"  })
   end,
 })
+
+-- Diagnostic / LSP toggles are global (not buffer-scoped), so set them once
+-- rather than re-registering on every LspAttach.
+
+-- vim virtual text diagnostics toggle
+vim.keymap.set("n", "<leader>tdd", function()
+  vim.diagnostic.config {
+    virtual_lines = not vim.diagnostic.config().virtual_lines,
+    virtual_text = not vim.diagnostic.config().virtual_text,
+  }
+end, { desc = "toggle diagnostic" })
+
+--  lsp on/off
+vim.keymap.set("n", "<leader>tdp", function()
+  vim.lsp.enable("pyright", false)
+end, { desc = "toggle pyright off" })
+
+vim.keymap.set("n", "<leader>tdP", function()
+  vim.lsp.enable("pyright", true)
+end, { desc = "toggle pyright on" })
+
+vim.keymap.set("n", "<leader>tdr", function()
+  vim.lsp.enable("ruff", false)
+end, { desc = "toggle ruff off" })
+
+vim.keymap.set("n", "<leader>tdR", function()
+  vim.lsp.enable("ruff", true)
+end, { desc = "toggle ruff on" })
 
 -- This is copied straight from blink
 -- https://cmp.saghen.dev/installation#merging-lsp-capabilities
@@ -68,11 +71,9 @@ vim.lsp.config("*", {
 vim.lsp.enable({ "gopls", "pyright", "luals", "ruff", "rust_analyzer", "css_lsp", "htmx"})
 
 -- disable default lsp binding cause why not
-vim.keymap.del('n', 'gra')
-vim.keymap.del('n', 'gri')
-vim.keymap.del('n', 'grn')
-vim.keymap.del('n', 'grt')
-vim.keymap.del('n', 'grr')
+for _, k in ipairs({ 'gra', 'gri', 'grn', 'grt', 'grr' }) do
+  pcall(vim.keymap.del, 'n', k)
+end
 
 
 
