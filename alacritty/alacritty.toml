@@ -8,10 +8,10 @@ import = [
 
 # Window Customization
 [window]
-padding = { x = 10, y = 10 }
-opacity = 0.95
+padding = { x = 10, y = 30}
+opacity = 0.9
 blur = false
-decorations = "None"
+decorations = "Transparent"
 decorations_theme_variant = "dark"
 
 [font]
