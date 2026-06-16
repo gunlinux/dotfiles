@@ -19,15 +19,24 @@ cmp.setup({
   keymap = { preset = 'enter' },
   appearance = { nerd_font_variant = 'mono' },
   completion = {
-    documentation = { auto_show = false, auto_show_delay_ms = 5000 },
+    documentation = { auto_show = false, auto_show_delay_ms = 5000, },
     trigger = { prefetch_on_insert = false },
   },
   signature = {
     enabled = false,
     trigger = {
-      enabled = false, -- if I uncomment this, the keymap won't work anymore
-      show_on_trigger_character = false,
-      show_on_insert_on_trigger_character = false,
+      -- Show the signature help automatically
+      enabled = true,
+      -- Show the signature help window after typing any of alphanumerics, `-` or `_`
+      show_on_keyword = true,
+      blocked_trigger_characters = {},
+      blocked_retrigger_characters = {},
+      -- Show the signature help window after typing a trigger character
+      show_on_trigger_character = true,
+      -- Show the signature help window when entering insert mode
+      show_on_insert = true,
+      -- Show the signature help window when the cursor comes after a trigger character when entering insert mode
+      show_on_insert_on_trigger_character = true,
     },
   },
   sources = {
@@ -364,7 +373,7 @@ dap.configurations.python = {
     request = 'launch',
     name = 'Run pytest',
     module = 'pytest',
-    args = {'${file}'},
+    args = { '${file}' },
     pythonPath = function()
       return require("venv-selector").python() or vim.fn.exepath('python3') or 'python3'
     end,
@@ -379,8 +388,8 @@ dap.configurations.python = {
 local function is_normal_win(win)
   local buf = vim.api.nvim_win_get_buf(win)
   return not vim.wo[win].winfixbuf
-    and vim.bo[buf].buftype == ''
-    and not vim.bo[buf].filetype:match('^neotest')
+      and vim.bo[buf].buftype == ''
+      and not vim.bo[buf].filetype:match('^neotest')
 end
 
 local function focus_normal_win()
@@ -427,7 +436,7 @@ vim.keymap.set({ "n", "v" }, "<F7>", "<CMD>DapStepInto<CR>", { desc = "Dap Step 
 vim.keymap.set({ "n", "v" }, "<F8>", "<CMD>DapStepOver<CR>", { desc = "Dap Step Over" })
 vim.keymap.set({ "n", "v" }, "<F9>", "<CMD>DapStepOut<CR>", { desc = "Dap Step Out" })
 vim.keymap.set("n", "<leader>da", function()
-  dap.set_exception_breakpoints({"raised", "uncaught"})
+  dap.set_exception_breakpoints({ "raised", "uncaught" })
 end, { desc = "Stop on exceptions" })
 
 
@@ -442,6 +451,9 @@ require("noice").setup({
     -- pyright spams $/progress on every open/edit; noice renders it as a
     -- flashing "pyright" spinner. Turn it off.
     progress = { enabled = false },
+    -- auto signature-help popup on typing `(` is annoying; disable it entirely.
+    -- <Leader>gs still triggers it manually via vim.lsp.buf.signature_help().
+    signature = { enabled = false, auto_open = { enabled = false } },
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -451,10 +463,10 @@ require("noice").setup({
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    bottom_search = true,          -- use a classic bottom cmdline for search
+    command_palette = true,        -- position the cmdline and popupmenu together
     long_message_to_split = false, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    inc_rename = false,            -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false,        -- add a border to hover docs and signature help
   },
 })
