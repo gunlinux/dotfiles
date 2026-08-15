@@ -47,8 +47,8 @@ vim.keymap.set("n", "<leader>tdR", function()
   vim.lsp.enable("ruff", true)
 end, { desc = "toggle ruff on" })
 
--- This is copied straight from blink
--- https://cmp.saghen.dev/installation#merging-lsp-capabilities
+-- Plain capabilities (no completion plugin): line-only folding keeps the
+-- LSP from sending full folding ranges that we don't render.
 local capabilities = {
   textDocument = {
     foldingRange = {
@@ -57,8 +57,6 @@ local capabilities = {
     },
   },
 }
-
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 -- Setup language servers.
 
@@ -84,12 +82,12 @@ function RestartLSP()
         print("No active LSP clients")
         return
     end
-    
+
     -- Останавливаем всех активных клиентов
     for _, client in ipairs(clients) do
         vim.lsp.stop_client(client.id)
     end
-    
+
     -- Перезагружаем текущий буфер, чтобы LSP запустился снова
     vim.cmd('edit')
     print("LSP restarted")
