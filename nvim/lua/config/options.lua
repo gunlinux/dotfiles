@@ -32,10 +32,8 @@ vim.diagnostic.config({ virtual_text = true })
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
-
 vim.lsp.log.set_level("warn")
 
 -- disable mouse
 vim.opt.mousescroll = "ver:0,hor:0"
 vim.opt.mouse = ""
-

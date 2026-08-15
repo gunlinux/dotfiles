@@ -12,6 +12,6 @@ vim.keymap.set({ "n" }, "<Leader>P", '"+P')  -- Paste before cursor from clipboa
 
 vim.keymap.set({ "n" }, "<Leader>bdd", '<cmd>%bd|edit#|bd#<CR>')  -- Close others buffers
 
--- Буфера ( ) ( ) 
+-- Буфера ( ) ( )
 vim.keymap.set({ "n" }, "<Leader><Left>", '<cmd>:bp<CR>')
 vim.keymap.set({ "n" }, "<Leader><Right>", '<cmd>:bn<CR>')
