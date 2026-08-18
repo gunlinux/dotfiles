@@ -35,8 +35,8 @@ features or restored via `vim.pack`:
 | solarized-osaka.nvim  | manual port in `colors/solarized-osaka.lua`            |
 | lualine.nvim          | custom `statusline.lua`                                 |
 | bufferline.nvim       | custom `tabline.lua`                                    |
-| blink.cmp             | built-in LSP autocompletion (`completion.lua`)          |
-| neo-tree.nvim         | netrw (`explorer.lua`, `<Leader><Tab>`)                 |
+| blink.cmp             | restored via `vim.pack` (`completion.lua`)              |
+| neo-tree.nvim         | restored via `vim.pack` (`explorer.lua`, `<Leader><Tab>`) |
 | gitsigns.nvim         | sign column + hunk jumps via `git diff` (`git.lua`)     |
 | git-blame.nvim        | `git blame` in a split (`git.lua`)                      |
 | lazygit.nvim          | `:terminal lazygit` (`git.lua`)                         |
@@ -45,7 +45,7 @@ features or restored via `vim.pack`:
 | mason-nvim-dap        |                                                        |
 | nvim-tmux-navigation  | manual split/tmux dispatch (`tmux.lua`)                 |
 | zen-mode.nvim         | option toggle (`ui.lua`, `<Leader>z`)                   |
-| which-key.nvim        | keymap listing buffer (`ui.lua`, `<Leader>?`)           |
+| which-key.nvim        | restored via `vim.pack` (`ui.lua`, `<Leader>?`)           |
 | neotest               | `:make` + quickfix (`ui.lua`, `<Leader>lt` / `<Leader>lo`) |
 | venv-selector.nvim    | restored via `vim.pack` (`venv.lua`)                    |
 
@@ -61,7 +61,6 @@ features or restored via `vim.pack`:
 - **mason.nvim (LSP)** — LSP binaries are expected on `$PATH` (same assumption
   the `lsp/*.lua` files already make); mason is used only to install DAP
   debuggers (see `dap.lua`).
-- **friendly-snippets** — no built-in snippet engine.
 
 ## Dependencies on `$PATH`
 

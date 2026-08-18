@@ -1,5 +1,5 @@
--- Misc UI: zen mode, keymap viewer and a test runner (replace zen-mode.nvim,
--- which-key.nvim and neotest respectively).
+-- Misc UI: zen mode, keymap hints (which-key.nvim) and a test runner
+-- (replace zen-mode.nvim and neotest respectively).
 
 -- ── Zen mode ─────────────────────────────────────────────────────────────
 local zen_saved = nil
@@ -31,29 +31,11 @@ end
 
 vim.keymap.set("n", "<Leader>z", toggle_zen, { desc = "zen mode" })
 
--- ── Keymap viewer (which-key replacement) ────────────────────────────────
+-- ── Keymap hints (which-key.nvim) ───────────────────────────────────────
+require("which-key").setup({})
 vim.keymap.set("n", "<leader>?", function()
-  local maps = {}
-  for _, m in ipairs(vim.api.nvim_get_keymap("n")) do
-    if m.lhs:sub(1, 1) == " " then
-      maps[#maps + 1] = string.format("  %-12s %s", m.lhs:sub(2), m.desc or "")
-    end
-  end
-  table.sort(maps)
-
-  local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_name(buf, "[keymaps]")
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Keymaps (leader)", "" })
-  vim.api.nvim_buf_set_lines(buf, 2, -1, false, maps)
-  vim.bo[buf].buftype = "nofile"
-  vim.bo[buf].bufhidden = "wipe"
-  vim.bo[buf].modifiable = false
-  vim.keymap.set("n", "q", function()
-    vim.cmd("bwipeout!")
-  end, { buffer = buf })
-
-  vim.cmd("botright 12new | buffer " .. buf)
-end, { desc = "show keymaps" })
+  require("which-key").show({ global = false })
+end, { desc = "Buffer Local Keymaps (which-key)" })
 
 -- ── Test runner (neotest replacement) ────────────────────────────────────
 -- Runs pytest on the current file via :make, filling the quickfix list.

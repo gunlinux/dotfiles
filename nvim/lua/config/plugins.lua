@@ -23,6 +23,29 @@ vim.pack.add({
 -- Setup lives in config/venv.lua.
 vim.pack.add({ "https://github.com/linux-cultist/venv-selector.nvim" })
 
+-- ── Completion (blink.cmp) ────────────────────────────────────────────────
+-- Setup lives in config/completion.lua.
+vim.pack.add({ "https://github.com/rafamadriz/friendly-snippets" })
+vim.pack.add({
+  "https://github.com/saghen/blink.lib",
+  -- Pinned: cargo build on macOS 27 produces a dylib dyld rejects
+  -- (mis-aligned LINKEDIT), so completion.lua uses the CI-built prebuilt
+  -- from this release tag instead. Bump when the linker issue is fixed.
+  { src = "https://github.com/saghen/blink.cmp", version = "v1.10.2" },
+})
+
+-- ── File tree (neo-tree.nvim) ────────────────────────────────────────────
+-- Setup lives in config/explorer.lua. neo-tree v3.x requires nui + nvim-nio.
+vim.pack.add({
+  "https://github.com/MunifTanjim/nui.nvim",
+  "https://github.com/nvim-neotest/nvim-nio",
+  "https://github.com/nvim-neo-tree/neo-tree.nvim",
+})
+
+-- ── Keymap hints (which-key.nvim) ───────────────────────────────────────
+-- Setup lives in config/ui.lua.
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+
 -- ── Fuzzy finder (telescope.nvim) ───────────────────────────────────────
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
