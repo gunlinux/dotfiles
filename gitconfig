@@ -1,12 +1,19 @@
 [user]
-name = loki
-email = gunlinux@ya.ru
-[core]
+  name = loki
+  email = gunlinux@ya.ru
 
-excludesfile = ~/.gitignore_global
-editor = vim
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
 [color]
   ui = auto
+
 [color "branch"]
   current = red
   local = yellow
