@@ -46,6 +46,12 @@ vim.pack.add({
 -- Setup lives in config/ui.lua.
 vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 
+-- ── RustOwl (ownership/borrow visualization) ────────────────────────────
+-- Setup lives in config/rustowl.lua. The plugin ships in the rustowl repo
+-- (lua/ + ftplugin/rust.lua); the `rustowl` LSP server binary is installed
+-- separately with `cargo install rustowl` (vim.pack has no build hook).
+vim.pack.add({ "https://github.com/cordx56/rustowl" })
+
 -- ── Fuzzy finder (telescope.nvim) ───────────────────────────────────────
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
